@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Log In</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type ="text/css" href="css/mystylesheet.css">
+  <link rel="stylesheet" href="css/mystylesheet2.css" type="text/css">
+  <link rel="stylesheet" href="css/job-board.css" type="text/css">
+  <link rel="stylesheet" href="css/welcome.css" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+<!-- header -->
+<div id="header" class="parallax">
+  <div class="container-fluid">
+    <div class="left">
+      <a href="index.html"><img src="images/logo.JPG" alt="logo" class="logo"></a>
+    </div>
+	<div class="left" id="donate">
+		<form action="https://www.paypal.com/cgi-bin" method="post" target="_top">
+			<p>
+				<input name="cmd" type="hidden" value="_s-xclick">
+				<input name="hosted_button_id" type="hidden" value="BJQBXZUMH3UQ4">
+			</p>
+			<p style="text-align: center;">&nbsp;</p>
+			<p>
+				<input alt="PayPal - The safer, easier way to pay online!" border="0" name="submit"
+				src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
+			</p>
+			<p style="text-align: center;">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
+				style="display:block; height:1px; margin-left:auto; margin-right:auto; width:1px">
+			</p>
+		</form>
+	</div>
+    <div class="right">
+      <div id="userLogin">
+           <form class ="form-inline" action="login.php" method="post">
+				<div class="err">
+					<p>Incorrect Username or Password</p>
+				</div>
+               <div class="input-group">
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                 <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+               </div>
+               <div class="input-group">
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                 <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+               </div>
+             <div class="checkbox">
+               <label class="rememberMe"><input type="checkbox" name="remember"> Remember me</label>
+             </div>
+             <button type="submit" class="btn btn-default">Submit</button>
+           </form>
+
+        </div>
+    </div>
+  </div>
+      <footer>
+        <p>&copy; 2018 New GateWay Solutions Corporation</p>
+    </footer>
+</div>
+<!-- end header -->
+</body>
+</html>

@@ -1,0 +1,105 @@
+body {
+    background-image: url("../images/hero.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+}
+.logo {
+    height: 80px;
+    box-shadow: 5px 5px 5px #aaa;
+    padding-top: 10px;
+	display: inline-block;
+	margin-left: 300px;
+}
+.logo:hover {
+    opacity: .8;
+}
+a .logo {
+    margin: 0 auto;
+}
+#donate {
+	display: inline-block;
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+#donateButton {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+h1 {
+    text-align: center;
+    color: #fff;
+    text-shadow: 5px 5px 5px #aaa;
+}
+h2 {
+    text-shadow: 5px 5px 5px #aaa;
+}
+.container {
+    background-color: rgba(0,0,0,.3);
+    padding: 1rem;
+    margin-top: 1rem;
+}
+.events {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.events a {
+    color: #fff;
+}
+.events a:hover {
+    color: #000;
+}
+.options {
+    margin-top: 5rem;
+    text-align: center;
+}
+.options a {
+    text-decoration: none;
+    margin: 1rem;
+    padding: .5rem;
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    border-radius: 5px;
+}
+.options a:hover {
+    color: rgba(0,0,0,.5);
+    background-color: #fff;
+}
+#form {
+    display: block;
+    text-align: center;
+	margin: 5rem auto;
+}
+input {
+    margin-bottom: 1rem;
+    padding: .5rem;
+}
+.submit {
+    background-color: rgba(0,0,0,.5);
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+.submit:hover {
+    color: rgba(0,0,0,.5);
+    background-color: #fff;
+}
+footer {
+    text-align: center;
+    background-color: rgba(0,0,0,.5);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+}
+.logout {
+	display: inline-block;
+	float: right;
+	margin-top: 50px;
+	margin-right: 50px;
+}

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New GateWay Job Board</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type ="text/css" href="mystylesheet.css">
+  <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+<!-- header -->
+<div id="header">
+  <div class="container-fluid">
+    <div class="left">
+      <div id="logo"><h1>New GateWay Job Board</h1></div>
+    </div>
+    <div class="right">
+      <div id="userLogin">
+           <form class ="form-inline" action="login.php" method="post">
+               <div class="input-group">                 
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                 <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+               </div>
+               <div class="input-group">
+                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                 <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+               </div>
+             <div class="checkbox">
+               <label><input type="checkbox" name="remember"> Remember me</label>
+             </div>
+             <button type="submit" class="btn btn-default">Submit</button>
+           </form>
+
+        </div>
+    </div>
+  </div>
+</div>
+<!-- end header -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+      <div class="navbar-header">
+       <a class ="navbar-brand", href="file:///C:/Users/dhoang@ngsc.org/Desktop/New%20Gateway%20Job%20Board/index(job%20connection).html">Home</a>
+      </div>
+   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+   </button>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+            <ul class="nav navbar-nav">
+                  <li><a href="file:///C:/Users/dhoang@ngsc.org/Desktop/New%20Gateway%20Job%20Board/jobseeker.html">JOB SEEKERS</a></li>
+                  <li><a href="file:///C:/Users/dhoang@ngsc.org/Desktop/New%20Gateway%20Job%20Board/employer.html">EMPLOYER</a></li>
+                  <li><a href="file:///C:/Users/dhoang@ngsc.org/Desktop/New%20Gateway%20Job%20Board/intern-volunteer.html">INTERN/VOLUNTEER</a></li>
+            </ul>
+       <ul class="nav navbar-nav navbar-right">
+               <form class="form search" action="seeksearch.php" method="post">
+          Search Jobs
+                 <input class="keywords" type="text" name="keywordSearch" placeholder="KEYWORDS / COMPANY">
+                 <input class="cnz" type="text" name="cnzSearch" placeholder="CITY / ZIPCODE">
+                 <input class="button" type="submit" value="Go">
+               </form>
+      </ul>
+      </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  <div class ="container">
+  <div class ="jumbotron">
+    <h2>EMPLOYER REGISTRATION</h2>
+        <form class="form-horizontal" action="/employer.php" method="post">
+          <fieldset>
+                   <legend>Employer information:</legend>
+                     <div class="form-group">
+                         <div class="required col-sm-3"><label>First name:</label><input type="text" class="form-control" id="First Name" name="firstName">           </div>
+                         <div class="required col-sm-3"><label>Last name:</label><input type="text" class="form-control" id="Last Name" name="lastName"></div>
+                     </div>
+                     <div class ="form-group">
+                          <label class=" col-sm-1" class="form-control" id="Address" for="address">Address:</label>
+                          <div class="col-sm-5"><input type="text" class="form-control"  name="Address"></div>
+                           </div>
+                      <div class ="form-group ">
+                          <div class="required col-sm-3"><label>City:</label><input type="text" class="form-control" id="City" name="City"></div>
+                          <div class="required col-sm-3"><label>State:</label><input type="text" class="form-control"  id ="State" value="CA" name="State"></div>
+                          <div class="required col-sm-3"><label>Zipcode:</label><input type="number"  patern ="[0-9]{5}" class="form-control" id ="Zip" name="zip"></div>
+                      </div>
+                      <div class ="form-group">
+                          <label class =" col-sm-2" for ="Telephone">Phone Number:</label>
+                          <div class="col-sm-3"><input type ="tel" class ="form-control" id ="Telephone" name="Telephone">
+                          </div>
+                      </div>
+
+                      <div class ="form-group">
+                          <label class="required col-sm-1" for="inputEmail1">Email:</label>
+                                  <div class="col-sm-5"><input type="email" class="form-control" id="inputEmail1" name="Email"></div>
+                      </div>
+                      <div class ="form-group">
+                          <label class="required col-sm-1" for="userName">User Name:</label>
+                                  <div class="col-sm-5"><input type="text" class="form-control" id="userName" name="userName"></div>
+                      </div>
+                      <div class ="form-group">
+                          <label class="required col-sm-1" for="pass">Password</label>
+                                <div class="col-sm-5"><input type="password" class="form-control" id="pass" name="password"></div>
+                      </div>
+          </fieldset>
+          <fieldset>
+                  <legend>Company Information:</legend>
+                      <div class ="form-group">
+                          <label class="col-sm-2" for="LinkedIn">LinkedIn Profile:</label>
+                                  <div class="col-sm-5"><input type="url" class="form-control" id="LinkedIn" placeholder="https://www.linkedin.com/company/new-gateway-solutions-corporation" name="LinkedIn"></div>
+                      </div>
+                      <div class ="form-group">
+                          <label class="required col-sm-2" for="comName">Company Name:</label>
+                                  <div class="col-sm-5"><input type="text" class="form-control" id="comName" placeholder="Company" name="Company"></div>
+                      </div>
+
+                      <div class ="form-group">
+                          <label class="col-sm-2" for="comWebsite">Company Website:</label>
+                                  <div class="col-sm-5"><input type="url" class="form-control" id="comWebsite" placeholder="https://www.ngsc.com" name="comWebsite">            </div>
+                      </div>
+                      <div class ="form-group">
+                          <label class=" col-sm-2" for="industry">Industry:</label>
+                                  <div class="col-sm-5"><input type="text" class="form-control" id="industry" placeholder="Industry" name="Industry"></div>
+                      </div>
+
+           </fieldset>
+                      <div class="btnForm">
+                      <p>
+                        <input class="button" type="submit" value="Register">
+                        <input class="button" type="reset" value="Reset">
+                          </p>
+                          </div>
+      <!-- <div class ="form-group">
+              <label class ="control-label col-sm-2" for ="firstName">First Name:</label>
+              <div class="required col-xs-3">
+                <input type ="text" class ="form-control" id ="firstName" name ="firstName">
+              </div>
+          </div>
+          <div class ="form-group">
+              <label class ="control-label col-sm-2" for ="lastName">Last Name:</label>
+              <div class="required col-xs-3">
+                <input type ="text" class ="form-control" id ="lastName" name ="lastName">
+              </div>
+
+          </div>
+           -->

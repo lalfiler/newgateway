@@ -1,0 +1,24 @@
+form input {
+    margin-right: 5px;
+}
+.rememberMe {
+    color:white;
+}
+
+zip.form-control{
+    width: 5%
+
+}
+#userLogin {
+    margin-top: 150px;
+}
+footer {
+    text-align: center;
+    background-color: rgba(0,0,0,.5);
+    padding: 10px 0 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #fff;
+}

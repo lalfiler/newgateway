@@ -1,0 +1,55 @@
+.navbar-brand {
+	color:white
+}
+.navbar-nav>li>a{
+    color:white
+}
+#header {
+	background-color: #000033;
+}
+#logo {
+	color:  #ff9900;
+}
+#userLogin {
+	color: gray ;
+}
+a:focus {
+    outline: none;
+}
+
+.navbar.collapse {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.navbar-nav > li > a, .navbar-brand {
+    padding-top:5px !important; padding-bottom:0 !important;
+    height: 30px;
+    
+}
+/*make navbar thinner*/
+.navbar {min-height:30px !important;}
+.navbar navbar-default > li > a, {
+    padding-top:5px !important; padding-bottom:5px !important;
+    height: 30px;
+}
+.right {
+	text-align:right;
+}
+#formTitle {
+	background-color: #E9EBE7;
+
+}
+#main {
+	padding: 10px 0 40px;
+}
+.required::after {
+    content: "*";
+    right:0px;
+    top:10px;
+    border:0px solid;
+    position:absolute;
+    color:red;
+}
+.btnForm {
+	text-align: center;
+}
