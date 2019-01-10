@@ -23,22 +23,27 @@ $row_jobseekers = mysqli_query($link, $result_jobseekers);
 echo "<script>console.log('Hello! ')</script>";
 
 if(mysqli_num_rows($row_employers) == 1){
-header('Location: employers-dashboard.html');
-echo "Welcome to the Employer Portal";
-echo "<script>console.log('Hello! ')</script>";
-exit;
+	session_start();
+	echo "<script>console.log('row_employers == 1')</script>";
+	echo "<script> console.log('Hello, " . $email . "! ')</script>";
+	$_SESSION['email'] = $email;
+	$_SESSION['password_hashed'] = $password;
+	header('Location: employers-dashboard.html');
+	echo "<script>console.log('row_employers == 1')</script>";
+	echo "<script> console.log('Hello, " . $email . "! ')</script>";
+	exit;
 
 }elseif(mysqli_num_rows($row_jobseekers) == 1){
-header('location: job-seekers-dashboard.html');
-echo "Welcome to the Job Seeker Portal";
-echo "<script> console.log('Hello, " . $email . "! ')</script>";
-exit;
+	$_SESSION['email'] = $email;
+	$_SESSION['password_hashed'] = $password;
+	header('location: job-seekers-dashboard.html');
+	echo "Welcome to the Job Seeker Portal";
+	echo "<script> console.log('Hello, " . $email . "! ')</script>";
+	exit;
 
 }else{
-header('location: login-fail.html');
-exit();
-
-
+	header('location: login-fail.html');
+	exit();
 }
 
 
