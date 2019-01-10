@@ -1,4 +1,8 @@
 <?php
+//include_once 'accesscontrol.php';
+
+echo "<script>console.log('omg what')</script>";
+
 
 $link = mysqli_connect("localhost", "root", "", "job_board_db");
  
@@ -10,27 +14,31 @@ if($link === false){
 $email = $_POST["email"];
 $password = hash('sha256', $_POST["password"]);
 
-$result = "SELECT * from employers WHERE email = '".$email."' AND password = '".$password."' limit 1";
-$row = mysqli_query($link, $result);
+$result_employers = "SELECT * from employers WHERE email = '".$email."' AND password = '".$password."' limit 1";
+$row_employers = mysqli_query($link, $result_employers);
 
-$result2 = "SELECT * from jobseekers WHERE email = '".$email."' AND password = '".$password."' limit 1";
-$r = mysqli_query($link, $result2);
+$result_jobseekers = "SELECT * from jobseekers WHERE email = '".$email."' AND password = '".$password."' limit 1";
+$row_jobseekers = mysqli_query($link, $result_jobseekers);
 
-if(mysqli_num_rows($row) == 1){
-header('Location: employers-dashboard.html');
-echo "Welcome to the Employer Portal";
-exit;
+echo "<script>console.log('Hello! ')</script>";
 
-}elseif(mysqli_num_rows($r) == 1){
-header('location: job-seekers-dashboard.html');
-echo "Welcome to the Job Seeker Portal";
-exit;
+if(mysqli_num_rows($row_employers) == 1){
+	session_start();
+	$_SESSION['email'] = $email;
+	$_SESSION['password_hashed'] = $password;
+	header('Location: employers-dashboard.php');
+	exit();
+
+}elseif(mysqli_num_rows($row_jobseekers) == 1){
+	session_start();
+	$_SESSION['email'] = $email;
+	$_SESSION['password_hashed'] = $password;
+	header('Location: job-seekers-dashboard.php');
+	exit();
 
 }else{
-header('location: login-fail.html');
-exit();
-
-
+	header('location: login-fail.html');
+	exit();
 }
 
 

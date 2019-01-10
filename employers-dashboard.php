@@ -1,3 +1,9 @@
+<?php 
+//include_once 'accesscontrol.php';
+session_start();
+$email = $_SESSION['email'];
+echo "<script> console.log('Hello, " . $email . "! ')</script>";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,8 +55,7 @@
         </div>
         </div>
     <footer>
-        <!-- <p>&copy; 2018 New GateWay Solutions Corporation</p> -->
-		<p>Welcome, <?php=$_SESSION['email']?>! You have entered a members-only area of the site. Don't you feel special?</p>
+        <p>&copy; 2018 New GateWay Solutions Corporation</p>
     </footer>
 </body>
 </html>
