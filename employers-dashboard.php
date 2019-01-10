@@ -39,7 +39,7 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
     <div class="container">
         <h1>Welcome to the Employer's Dashboard</h1>
         <div class="options">
-            <a href="job-posting.html" target="_blank">Add Job</a>
+            <a href="postajob.html" target="_blank">Add Job</a>
             <a href="events.html" target="_blank">Add Event</a>
             <a href="#" target="_blank">View Profile</a>
         </div>
