@@ -10,12 +10,12 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Employers Dashboard</title>
+    <title>Job Seekers Dashboard</title>
     <link rel="stylesheet" href="css/dashborad.css" type="text/css">
 </head>
 <body>
-	<div>
-		<a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo" style="display:inline-block; margin-left:30%;"></a>
+    <div>
+		<a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
 		<div id="donate" style="display:inline-block;">
 			<form action="https://www.paypal.com/cgi-bin" method="post" target="_top" id="donateButton">
 				<p>
@@ -37,15 +37,10 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
 		</form>
 	</div>
     <div class="container">
-        <h1>Welcome to the Employer's Dashboard</h1>
-        <div class="options">
-            <a href="job-posting.html" target="_blank">Add Job</a>
-            <a href="events.html" target="_blank">Add Event</a>
-            <a href="#" target="_blank">View Profile</a>
-        </div>
+        <h1>Welcome to the Job Seeker's Dashboard</h1>
         <div id="form">
             <form class="form search" action="search.html" method="post">
-                <h2>Search for job seekers</h2>
+                <h2>Search for jobs</h2>
                 <br>
                 <input class="job-title" type="text" name="job-title" placeholder="Job Title">
                 <input class="address" type="text" name="address" placeholder="City / Zipcode">
@@ -53,6 +48,7 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
                 <input class="submit" type="submit" value="Search">
             </form>
         </div>
+        <p class="events"><a href="#">Upcoming events</a></p>
         </div>
     <footer>
         <p>&copy; 2018 New GateWay Solutions Corporation</p>

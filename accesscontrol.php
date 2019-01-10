@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-echo "<script>console.log('omg what')</script>";
-
 if (isset($_POST['email'])) {
 $email = $_POST['email'];
 } else {
@@ -15,15 +13,10 @@ $password = $_POST['password'];
 $password = $_SESSION['password'];
 };
 
-echo "<script>console.log('omg what again')</script>";
-
 if(!isset($email)) {
-	echo "<script>console.log('im in the if')</script>";
 	header('Location: login.html');
 } else{
-	
-	echo "<script>console.log('im in the else')</script>";
-	
+		
 	$link = mysqli_connect("localhost", "root", "", "job_board_db");
  
 	if($link === false){
@@ -31,9 +24,7 @@ if(!isset($email)) {
 	}
 
 	$password_hashed = hash('sha256', $password);
-	
-	echo "<script>console.log('im in the else again')</script>";
-	
+		
 	$result_employers = "SELECT * from employers WHERE email = '".$email."' AND password = '".$password_hashed."' limit 1";
 	
 	$row_employers = mysqli_query($link, $result_employers);
@@ -46,8 +37,7 @@ if(!isset($email)) {
 	$_SESSION['email'] = $email;
 	$_SESSION['password_hashed'] = $password_hashed;
 	
-	echo "<script>console.log('row_employers is: 1')</script>";
-	//exit;
+	//exit();
 
 	}elseif(mysqli_num_rows($row_jobseekers) == 1){
 	$_SESSION['email'] = $email;

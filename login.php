@@ -24,22 +24,17 @@ echo "<script>console.log('Hello! ')</script>";
 
 if(mysqli_num_rows($row_employers) == 1){
 	session_start();
-	echo "<script>console.log('row_employers == 1')</script>";
-	echo "<script> console.log('Hello, " . $email . "! ')</script>";
 	$_SESSION['email'] = $email;
 	$_SESSION['password_hashed'] = $password;
-	header('Location: employers-dashboard.html');
-	echo "<script>console.log('row_employers == 1')</script>";
-	echo "<script> console.log('Hello, " . $email . "! ')</script>";
-	exit;
+	header('Location: employers-dashboard.php');
+	exit();
 
 }elseif(mysqli_num_rows($row_jobseekers) == 1){
+	session_start();
 	$_SESSION['email'] = $email;
 	$_SESSION['password_hashed'] = $password;
-	header('location: job-seekers-dashboard.html');
-	echo "Welcome to the Job Seeker Portal";
-	echo "<script> console.log('Hello, " . $email . "! ')</script>";
-	exit;
+	header('Location: job-seekers-dashboard.php');
+	exit();
 
 }else{
 	header('location: login-fail.html');
