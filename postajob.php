@@ -35,6 +35,7 @@ VALUES ('$companyID', '$address', '$city', '$state', '$zip', '$jobTitle', '$posi
 
 if(mysqli_query($link, $sql)){
     echo "Records added successfully.";
+	header('location: myjobs.php');
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }

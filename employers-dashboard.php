@@ -41,7 +41,7 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
         <div class="options">
             <a href="postajob.html" target="_blank">Add Job</a>
             <a href="events.html" target="_blank">Add Event</a>
-            <a href="#" target="_blank">View Profile</a>
+            <a href="myjobs.php" target="_blank">View Profile</a>
         </div>
         <div id="form">
             <form class="form search" action="search.html" method="post">

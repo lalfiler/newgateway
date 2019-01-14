@@ -14,6 +14,27 @@ if($link === false){
 $companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
 $companyID = (mysqli_fetch_row($companyID_object))[0];
 echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
+
+// Find company's jobs in database
+$query = mysqli_query($link, "SELECT * FROM postajob WHERE companyID = '".$companyID."'");
+$num_rows = mysqli_num_rows($query);
+//$link->close();
+
+echo "<b>
+<center>Database Output</center>
+</b>
+<br>
+<br>";
+while ($row = mysqli_fetch_assoc($query) ){
+$jobTitle = $row['jobTitle'];
+$experienceLevel = $row['experienceLevel'];
+echo "<b>
+$jobTitle <br>
+$experienceLevel</b>
+<hr>
+<br>
+<br>";
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +49,7 @@ echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 <body>
     <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
     <h1>My Jobs</h1>
+	<div></div>
     <footer>
         <p>&copy; 2018 New GateWay Solutions Corporation</p>
     </footer>
