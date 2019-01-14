@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Jobs</title>
+    <link rel="stylesheet" href="css/job-posting.css" type="text/css">
+</head>
+<body>
+    <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
+    <h1>My Jobs</h1>
+
 <?php
 session_start();
 $email = $_SESSION['email'];
@@ -21,7 +34,6 @@ $num_rows = mysqli_num_rows($query);
 //$link->close();
 
 echo "<b>
-<center>Database Output</center>
 </b>
 <br>
 <br>";
@@ -37,19 +49,6 @@ $experienceLevel</b>
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>My Jobs</title>
-    <link rel="stylesheet" href="css/job-posting.css" type="text/css">
-</head>
-<body>
-    <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
-    <h1>My Jobs</h1>
-	<div></div>
     <footer>
         <p>&copy; 2018 New GateWay Solutions Corporation</p>
     </footer>
