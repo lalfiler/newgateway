@@ -41,8 +41,8 @@ while ($row = mysqli_fetch_assoc($query) ){
 $jobTitle = $row['jobTitle'];
 $experienceLevel = $row['experienceLevel'];
 echo "<b>
-$jobTitle <br>
-$experienceLevel</b>
+$jobTitle <a href='#'>Edit This Job</a><br>
+$experienceLevel <a href='#'>Delete This Job</a></b>
 <hr>
 <br>
 <br>";
