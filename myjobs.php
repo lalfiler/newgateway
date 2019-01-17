@@ -42,9 +42,9 @@
 		$experienceLevel = $row['experienceLevel'];
 		$jobID = $row['id'];
 		echo "<b>
-		$jobTitle <a href='job.php?id={$id}'>View This Job</a><br>
-		$experienceLevel <a href='job.php?id={$id}'>Edit This Job</a><br>
-		<a href='job.php?id={$id}'>Delete This Job</a></b>
+		$jobTitle <a href='job.php?id={$jobID}'>View This Job</a><br>
+		$experienceLevel <a href='job.php?id={$jobID}'>Edit This Job</a><br>
+		<a href='job.php?id={$jobID}'>Delete This Job</a></b>
 		<hr>
 		<br>
 		<br>";
