@@ -43,7 +43,7 @@
 		$jobID = $row['id'];
 		echo "<b>
 		$jobTitle <a href='job.php?id={$jobID}'>View This Job</a><br>
-		$experienceLevel <a href='job.php?id={$jobID}'>Edit This Job</a><br>
+		$experienceLevel <a href='update_job_post.php?id={$jobID}'>Edit This Job</a><br>
 		<a href='job.php?id={$jobID}'>Delete This Job</a></b>
 		<hr>
 		<br>
