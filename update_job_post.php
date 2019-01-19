@@ -59,6 +59,66 @@
 			$salary = $row['salary'];
 			 
 		?>
+		<?php
+		// check if form was submitted
+		if($_POST){
+			 
+			try{
+			 
+				// write update query
+				$query = "UPDATE postajob 
+							SET address=:address, city=:city, state=:state, zip=:zip, jobTitle=:jobTitle, positionType=:positionType, experienceLevel=:experienceLevel, category=:category, salary=:salary, website=:website, jobDescription=:jobDescription
+							WHERE id = :id";
+		 
+				// prepare query for execution
+				$stmt = $link->prepare($query);
+		 
+				// posted values
+				$address=htmlspecialchars(strip_tags($_POST['address']));
+				$city=htmlspecialchars(strip_tags($_POST['city']));
+				$state=htmlspecialchars(strip_tags($_POST['state']));
+				$zip=htmlspecialchars(strip_tags($_POST['zip']));
+				$jobTitle=htmlspecialchars(strip_tags($_POST['jobTitle']));
+				$positionType=htmlspecialchars(strip_tags($_POST['positionType']));
+				$experienceLevel=htmlspecialchars(strip_tags($_POST['experienceLevel']));
+				$category=htmlspecialchars(strip_tags($_POST['category']));
+				$salary=htmlspecialchars(strip_tags($_POST['salary']));
+				$website=htmlspecialchars(strip_tags($_POST['website']));
+				$jobDescription=htmlspecialchars(strip_tags($_POST['jobDescription']));
+		 
+				// bind the parameters
+				$stmt->bindParam('sss', $address, $city, $state, $zip, $jobTitle, $positionType, $experienceLevel, $category, $salary, $website, $jobDescription);
+				
+				/*
+				$stmt->bindParam(':address', $address);
+				$stmt->bindParam(':city', $city);
+				$stmt->bindParam(':state', $state);
+				$stmt->bindParam(':zip', $zip);
+				$stmt->bindParam(':jobTitle', $jobTitle);
+				$stmt->bindParam(':positionType', $positionType);
+				$stmt->bindParam(':experienceLevel', $experienceLevel);
+				$stmt->bindParam(':category', $category);
+				$stmt->bindParam(':salary', $salary);
+				$stmt->bindParam(':website', $website);
+				$stmt->bindParam(':jobDescription', $jobDescription);
+				$stmt->bindParam(':id', $id);
+				*/
+				 
+				// Execute the query
+				if($stmt->execute()){
+					echo "<div class='alert alert-success'>Record was updated.</div>";
+				}else{
+					echo "<div class='alert alert-danger'>Unable to update record. Please try again.</div>";
+				}
+				 
+			}
+			 
+			// show errors
+			catch(Exception $e){
+				die('ERROR: ' . $e->getMessage());
+			}
+		}
+		?>
  
 		<div id="form">
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"] . "?id={$id}");?>" method="post">
