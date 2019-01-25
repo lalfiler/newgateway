@@ -58,21 +58,11 @@
 			$jobDescription = $row['jobDescription'];
 			$salary = $row['salary'];
 			 
-		?>
-		<?php
 		// check if form was submitted
 		if($_POST){
 			 
 			try{
 			 
-				// write update query
-				$query = "UPDATE postajob 
-							SET address=:address, city=:city, state=:state, zip=:zip, jobTitle=:jobTitle, positionType=:positionType, experienceLevel=:experienceLevel, category=:category, salary=:salary, website=:website, jobDescription=:jobDescription
-							WHERE id = :id";
-		 
-				// prepare query for execution
-				$stmt = $link->prepare($query);
-		 
 				// posted values
 				$address=htmlspecialchars(strip_tags($_POST['address']));
 				$city=htmlspecialchars(strip_tags($_POST['city']));
@@ -86,27 +76,17 @@
 				$website=htmlspecialchars(strip_tags($_POST['website']));
 				$jobDescription=htmlspecialchars(strip_tags($_POST['jobDescription']));
 		 
-				// bind the parameters
-				$stmt->bindParam('sss', $address, $city, $state, $zip, $jobTitle, $positionType, $experienceLevel, $category, $salary, $website, $jobDescription);
+				// write update query
+				$query = "UPDATE postajob 
+							SET address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', jobTitle='" .$jobTitle. "', positionType='" .$positionType. "', experienceLevel='" .$experienceLevel. "', category='" .$category. "', salary='" .$salary. "', website='" .$website. "', jobDescription='" .$jobDescription. "'
+							WHERE id ='" .$id. "'";
+		 
+				// prepare query for execution
+				$stmt = $link->prepare($query);
 				
-				/*
-				$stmt->bindParam(':address', $address);
-				$stmt->bindParam(':city', $city);
-				$stmt->bindParam(':state', $state);
-				$stmt->bindParam(':zip', $zip);
-				$stmt->bindParam(':jobTitle', $jobTitle);
-				$stmt->bindParam(':positionType', $positionType);
-				$stmt->bindParam(':experienceLevel', $experienceLevel);
-				$stmt->bindParam(':category', $category);
-				$stmt->bindParam(':salary', $salary);
-				$stmt->bindParam(':website', $website);
-				$stmt->bindParam(':jobDescription', $jobDescription);
-				$stmt->bindParam(':id', $id);
-				*/
-				 
 				// Execute the query
 				if($stmt->execute()){
-					echo "<div class='alert alert-success'>Record was updated.</div>";
+					echo "<div class='alert alert-success'>Job Post was updated.</div>";
 				}else{
 					echo "<div class='alert alert-danger'>Unable to update record. Please try again.</div>";
 				}
