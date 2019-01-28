@@ -36,10 +36,17 @@
 			$companyID = (mysqli_fetch_row($companyID_object))[0];
 			echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 					
-			
+			/*
+			if ($error_message != '') {
+				echo '<div class="alert alert-danger"><strong>Error: </strong> ' . $error_message . '</div>';
+			};
+			if ($success_message != '') {
+				echo '<div class="alert alert-success"><strong>Success: </strong> ' . $success_message . '</div>';
+			};
+			*/
 		?>
  
-		<form>
+		<form method="POST" action="change_password_employer.php">
 			<div>
 				<label for="oldPassword">Old Password:</label>
 				<br>
@@ -61,10 +68,6 @@
 		</form>
  
     </div> <!-- end .container -->
-	
-	<?php
-	
-	?>
      
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
