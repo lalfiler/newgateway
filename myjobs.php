@@ -10,6 +10,10 @@
 <body>
     <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
     <h1>My Jobs</h1>
+	
+	<br>
+	<a href="edit_password_employer.php">Edit My Password</a>
+	<br>
 
 <?php
 	session_start();
