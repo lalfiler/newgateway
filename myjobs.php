@@ -28,7 +28,7 @@
 	// if it was redirected from delete.php
 	if($action=='deleted'){
 		echo "<div class='alert alert-success'>Job post was successfully deleted.</div>";
-	}
+	};
 	
 	// Grab company from database
 	$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
