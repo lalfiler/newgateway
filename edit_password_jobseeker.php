@@ -32,13 +32,13 @@
 			}
 
 			// Grab company from database
-			$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
-			$companyID = (mysqli_fetch_row($companyID_object))[0];
-			echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
+			$jobSeekerID_object = mysqli_query($link, "SELECT id from jobseekers WHERE email = '".$email."'");
+			$jobSeekerID = (mysqli_fetch_row($jobSeekerID_object))[0];
+			echo "<script> console.log('companyID is: " . $jobSeekerID . "!')</script>";
 					
 		?>
  
-		<form method="POST" action="change_password_employer.php">
+		<form method="POST" action="change_password_jobseeker.php">
 			<div>
 				<label for="oldPassword">Old Password:</label>
 				<br>

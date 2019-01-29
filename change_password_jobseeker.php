@@ -11,16 +11,16 @@
 	}
 
 	// Grab company from database
-	$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
-	$companyID = (mysqli_fetch_row($companyID_object))[0];
-	echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
+	$jobSeekerID_object = mysqli_query($link, "SELECT id from jobseekers WHERE email = '".$email."'");
+	$jobSeekerID = (mysqli_fetch_row($jobSeekerID_object))[0];
+	echo "<script> console.log('jobSeekerID is: " . $jobSeekerID . "!')</script>";
 			
 	$oldPassword = $_POST['oldPassword'];
 	$newPassword = $_POST['newPassword'];
 	$newPasswordConfirm = $_POST['newPasswordConfirm'];
 	
 	$oldPasswordHashed = hash('sha256', $oldPassword);
-	$query = "SELECT password FROM employers WHERE email = '" . $email . "'";
+	$query = "SELECT password FROM jobseekers WHERE email = '" . $email . "'";
 	$oldPasswordDB_object = mysqli_query($link, $query);
 	$oldPasswordDB = (mysqli_fetch_row($oldPasswordDB_object))[0];
 	
@@ -29,7 +29,7 @@
 		if ($newPassword == $newPasswordConfirm){
 			echo "<script> console.log('NEW passwords match! update database!');</script>";
 			$newPasswordHashed = hash("sha256", $newPassword);
-			$query = "UPDATE employers SET password='" . $newPasswordHashed . "' WHERE email ='" . $email . "'";
+			$query = "UPDATE jobseekers SET password='" . $newPasswordHashed . "' WHERE email ='" . $email . "'";
 			
 			$stmt = $link->prepare($query);
 			
