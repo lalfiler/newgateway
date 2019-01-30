@@ -43,7 +43,7 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
             <a href="events.html" target="_blank">Add Event</a>
             <a href="myjobs.php" target="_blank">View Profile</a>
         </div>
-        <div id="form">
+        <!-- <div id="form">
             <form class="form search" action="search.html" method="post">
                 <h2>Search for job seekers</h2>
                 <br>
@@ -52,8 +52,8 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
                 <br>
                 <input class="submit" type="submit" value="Search">
             </form>
-        </div>
-        </div>
+        </div> -->
+    </div>
     <footer>
         <p>&copy; 2018 New GateWay Solutions Corporation</p>
     </footer>
