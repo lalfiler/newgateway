@@ -7,7 +7,7 @@ if($link === false){
 }
 $jobTitle = $_POST['jobTitle'];
 $city = $_POST['address'];
-$sql = ("SELECT * FROM postajob WHERE jobTitle LIKE '%$jobTitle%' AND city OR zip LIKE '%$city%'");
+$sql = ("SELECT * FROM postajob WHERE (jobTitle LIKE '%$jobTitle%') AND (city OR zip LIKE '%$city%')");
 $result = $link->query($sql);
 
 if ($result->num_rows > 0) {
