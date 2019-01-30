@@ -42,10 +42,10 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
     <div class="container">
         <h1>Welcome to the Job Seeker's Dashboard</h1>
         <div id="form">
-            <form class="form search" action="search.html" method="post">
+            <form class="form search" action="search.php" method="post">
                 <h2>Search for jobs</h2>
                 <br>
-                <input class="job-title" type="text" name="job-title" placeholder="Job Title">
+                <input class="job-title" type="text" name="jobTitle" placeholder="Job Title">
                 <input class="address" type="text" name="address" placeholder="City / Zipcode">
                 <br>
                 <input class="submit" type="submit" value="Search">
