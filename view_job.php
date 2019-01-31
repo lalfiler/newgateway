@@ -14,6 +14,8 @@
         <div class="page-header">
             <h1>Job Details</h1>
         </div>
+		
+		<a href='search.php' class='btn btn-danger'>Back to my job search</a>
          
 		<?php
 		
@@ -62,28 +64,33 @@
 			 
 		?>
  
-		<table>
+		<table style="margin-left:auto; margin-right:auto; background-color: rgba(238, 238, 238, .8)">
 			<tr>
-				<td>Job Title</td>
-				<td><?php echo htmlspecialchars($jobTitle, ENT_QUOTES);  ?></td>
+				<td style="width:15%">Job Title</td>
+				<td><strong><?php echo htmlspecialchars($jobTitle, ENT_QUOTES);  ?></strong></td>
 			</tr>
+			<br>
 			<tr>
-				<td>Experience Level</td>
-				<td><?php echo htmlspecialchars($experienceLevel, ENT_QUOTES);  ?></td>
+				<td style="width:15%">Position Type</td>
+				<td><strong><?php echo htmlspecialchars($positionType, ENT_QUOTES);  ?></strong></td>
 			</tr>
+			<br>
 			<tr>
-				<td>Experience Level</td>
-				<td><?php echo htmlspecialchars($experienceLevel, ENT_QUOTES);  ?></td>
+				<td style="width:15%">Wage (per hour)</td>
+				<td><strong><?php echo htmlspecialchars($salary, ENT_QUOTES);  ?></strong></td>
 			</tr>
+			<br>
 			<tr>
-				<td>Experience Level</td>
-				<td><?php echo htmlspecialchars($experienceLevel, ENT_QUOTES);  ?></td>
+				<td style="width:15%">Experience Level</td>
+				<td><strong><?php echo htmlspecialchars($experienceLevel, ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<br>
+			<tr>
+				<td>Description</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td>
-					<a href='search.php' class='btn btn-danger'>Back to my job search</a>
-				</td>
+				<td><strong><?php echo htmlspecialchars($jobDescription, ENT_QUOTES);  ?></strong></td>
 			</tr>
 		</table>
  
