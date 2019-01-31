@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>View Job</title>
+    <link rel="stylesheet" href="css/job-posting.css" type="text/css">
+</head>
+<body>
+ 
+    <div class="container">
+  
+        <div class="page-header">
+            <h1>Job Details</h1>
+        </div>
+         
+		<?php
+		
+			//include_once 'accesscontrol.php';
+			session_start();
+			$email = $_SESSION['email'];
+			echo "<script> console.log('Hello, " . $email . "! ')</script>";
+			
+			$link = mysqli_connect("localhost", "root", "", "job_board_db");
+	 
+			// Check connection
+			if($link === false){
+				die("ERROR: Could not connect. " . mysqli_connect_error());
+			}
+
+			// Grab company from database
+			$jobSeekerID_object = mysqli_query($link, "SELECT id from jobseekers WHERE email = '".$email."'");
+			$jobSeekerID = (mysqli_fetch_row($jobSeekerID_object))[0];
+			echo "<script> console.log('companyID is: " . $jobSeekerID . "!')</script>";
+					
+			// get passed parameter value, in this case, the record ID
+			// isset() is a PHP function used to verify if a value is there or not
+			$id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
+			
+			if (!$jobSeekerID){
+				echo "ERROR: Record ID not found";
+				exit;
+			};
+			 
+			// read current record's data
+			// prepare select query
+			$query = mysqli_query($link, "SELECT * FROM postajob WHERE id = '" . $id . "' LIMIT 1");
+			$row = mysqli_fetch_assoc($query);
+		 
+			$jobTitle = $row['jobTitle'];
+			$experienceLevel = $row['experienceLevel'];
+			$address = $row['address'];
+			$city = $row['city'];
+			$state = $row['state'];
+			$zip = $row['zip'];
+			$positionType = $row['positionType'];
+			$category = $row['category'];
+			$salary = $row['salary'];
+			$website = $row['website'];
+			$jobDescription = $row['jobDescription'];
+			 
+		?>
+ 
+		<table>
+			<tr>
+				<td>Job Title</td>
+				<td><?php echo htmlspecialchars($jobTitle, ENT_QUOTES);  ?></td>
+			</tr>
+			<tr>
+				<td>Experience Level</td>
+				<td><?php echo htmlspecialchars($experienceLevel, ENT_QUOTES);  ?></td>
+			</tr>
+			<tr>
+				<td>Experience Level</td>
+				<td><?php echo htmlspecialchars($experienceLevel, ENT_QUOTES);  ?></td>
+			</tr>
+			<tr>
+				<td>Experience Level</td>
+				<td><?php echo htmlspecialchars($experienceLevel, ENT_QUOTES);  ?></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<a href='search.php' class='btn btn-danger'>Back to my job search</a>
+				</td>
+			</tr>
+		</table>
+ 
+    </div> <!-- end .container -->
+     
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+   
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
+</body>
+</html>
