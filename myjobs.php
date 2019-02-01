@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>My Jobs</title>
-    <link rel="stylesheet" href="css/job-posting.css" type="text/css">
+    <link rel="stylesheet" href="css/job-list.css" type="text/css">
 </head>
 <body>
     <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
@@ -44,6 +44,8 @@
 	$num_rows = mysqli_num_rows($query);
 	//$link->close();
 
+	$experience_arr = ["entry-level"=>"Entry Level", "mid-level"=>"Mid Level", "senior-level"=>"Senior Level"];
+	
 	echo "<b>
 	</b>
 	<br>
@@ -53,11 +55,16 @@
 		$experienceLevel = $row['experienceLevel'];
 		$jobID = $row['id'];
 		echo "<b>
-		$jobTitle <a href='job.php?id={$jobID}'>View This Job</a><br>
-		$experienceLevel <a href='update_job_post.php?id={$jobID}'>Edit This Job</a><br>";
-		echo "<a href='#' onclick='delete_job({$jobID});' class='btn btn-danger'>Delete This Job</a></b>
-		<hr>
+		$jobTitle
 		<br>
+		$experience_arr[$experienceLevel] 
+		<br>
+		<a href='job.php?id={$jobID}' class='button'>View Job</a>
+		<br>
+		<a href='update_job_post.php?id={$jobID}' class='button'>Edit Job</a>
+		<br>
+		<a href='#' onclick='delete_job({$jobID});' class='button'>Delete Job</a></b>
+		<hr>
 		<br>";
 	}
 ?>
