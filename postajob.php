@@ -30,8 +30,8 @@ $website = mysqli_real_escape_string($link, $_REQUEST['website']);
 $jobDescription = mysqli_real_escape_string($link, $_REQUEST['jobDescription']);
 
 // Attempt insert query execution
-$sql = "INSERT INTO postajob (companyID, address, city, state, zip, jobTitle, positionType, experienceLevel, category, salary, website, jobDescription) 
-VALUES ('$companyID', '$address', '$city', '$state', '$zip', '$jobTitle', '$positionType', '$experienceLevel', '$category', '$salary', '$website', '$jobDescription')";
+$sql = "INSERT INTO postajob (companyID, address, city, state, zip, jobTitle, positionType, experienceLevel, category, salary, website, jobDescription, contactEmail) 
+VALUES ('$companyID', '$address', '$city', '$state', '$zip', '$jobTitle', '$positionType', '$experienceLevel', '$category', '$salary', '$website', '$jobDescription', '$contactEmail')";
 
 if(mysqli_query($link, $sql)){
     echo "Records added successfully.";
