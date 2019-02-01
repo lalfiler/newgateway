@@ -52,30 +52,99 @@
 			 
 			// read current record's data
 			// prepare select query
-			$query = mysqli_query($link, "SELECT jobTitle, experienceLevel FROM postajob WHERE id = '" . $id . "' LIMIT 1");
+			$query = mysqli_query($link, "SELECT * FROM postajob WHERE id = '" . $id . "' LIMIT 1");
 			$row = mysqli_fetch_assoc($query);
 		 
-			// values to fill up our form
 			$jobTitle = $row['jobTitle'];
 			$experienceLevel = $row['experienceLevel'];
+			$address = $row['address'];
+			$city = $row['city'];
+			$state = $row['state'];
+			$zip = $row['zip'];
+			$positionType = $row['positionType'];
+			$category = $row['category'];
+			$salary = $row['salary'];
+			$website = $row['website'];
+			$jobDescription = $row['jobDescription'];
+			$contactEmail = $row['contactEmail'];
+			
+			//associative arrays to translate database categories
+			$position_arr = ["full-time"=>"Full Time", "part-time"=>"Part Time", "temporary"=>"Temporary", "contract"=>"Contract", "commission"=>"Commission", "internship"=>"Internship"];
+			$experience_arr = ["entry-level"=>"Entry Level", "mid-level"=>"Mid Level", "senior-level"=>"Senior Level"];
+			$category_arr = ["jobFunctionAcct"=>"Accounting", "jobFunctionAdmn"=>"Administrative", 
+			"jobFunctionCre"=>"Arts and Design", 
+			"jobFunctionBd"=>"Business Development", 
+			"jobFunctionCss"=>"Community & Social Services", 
+			"jobFunctionCnsl"=>"Consulting",
+			"jobFunctionEdu"=>"Education",
+			"jobFunctionEng"=>"Engineering",
+			"jobFunctionEnt"=>"Entrepreneurship",
+			"jobFunctionFinc"=>"Finance",
+			"jobFunctionMd"=>"Healthcare Services",
+			"jobFunctionHr"=>"Human Resources",
+			"jobFunctionIt"=>"Information Technology",
+			"jobFunctionLgl"=>"Legal",
+			"jobFunctionMktg"=>"Marketing",
+			"jobFunctionPr"=>"Media & Communications",
+			"jobFunctionMps"=>"Military & Protective Services",
+			"jobFunctionOps"=>"Operations",
+			"jobFunctionProd"=>"Product Management",
+			"jobFunctionPpm"=>"Program & Product Management",
+			"jobFunctionBuy"=>"Purchasing",
+			"jobFunctionQa"=>"Quality Assurance",
+			"jobFunctionRe"=>"Real Estate",
+			"jobFunctionAcad"=>"Research",
+			"jobFunctionSale"=>"Sales",
+			"jobFunctionSupp"=>"Support"];
 			 
 		?>
  
-        <!--we have our html table here where the record will be displayed-->
-		<table class='table table-hover table-responsive table-bordered'>
+        <table style="margin-left:auto; margin-right:auto; background-color: rgba(238, 238, 238, .8)">
 			<tr>
-				<td>Job Title</td>
-				<td><?php echo htmlspecialchars($jobTitle, ENT_QUOTES);  ?></td>
+				<td style="width:15%">Job Title</td>
+				<td><strong><?php echo htmlspecialchars($jobTitle, ENT_QUOTES);  ?></strong></td>
 			</tr>
+			<br>
 			<tr>
-				<td>Experience Level</td>
-				<td><?php echo htmlspecialchars($experienceLevel, ENT_QUOTES);  ?></td>
+				<td style="width:15%">Location</td>
+				<td><strong><?php echo htmlspecialchars($address) . ", " . htmlspecialchars($city) . ", " . htmlspecialchars($state); ?></strong></td>
+			</tr>
+			<br>
+			<tr>
+				<td style="width:15%">Position Type</td>
+				<td><strong><?php echo htmlspecialchars($position_arr[$positionType], ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<br>
+			<tr>
+				<td style="width:15%">Position Category</td>
+				<td><strong><?php echo htmlspecialchars($category_arr[$category], ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<br>
+			<tr>
+				<td style="width:15%">Wage (per hour)</td>
+				<td><strong><?php echo htmlspecialchars($salary, ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<br>
+			<tr>
+				<td style="width:15%">Experience Level</td>
+				<td><strong><?php echo htmlspecialchars($experience_arr[$experienceLevel], ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<br>
+			<tr>
+				<td>Description</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td>
-					<a href='myJobs.php' class='btn btn-danger'>Back to my jobs</a>
-				</td>
+				<td><strong><?php echo htmlspecialchars($jobDescription, ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<tr>
+				<td>Contact Email</td>
+				<td><strong><?php echo htmlspecialchars($contactEmail, ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<br>
+			<tr>
+				<td style="width:15%">Website</td>
+				<td><strong><?php echo htmlspecialchars($website, ENT_QUOTES);  ?></strong></td>
 			</tr>
 		</table>
  
