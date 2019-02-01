@@ -61,6 +61,36 @@
 			$salary = $row['salary'];
 			$website = $row['website'];
 			$jobDescription = $row['jobDescription'];
+			$contactEmail = $row['contactEmail'];
+			
+			//associative arrays to translate database categories
+			$position_arr = ["full-time"=>"Full Time", "part-time"=>"Part Time", "temporary"=>"Temporary", "contract"=>"Contract", "commission"=>"Commission", "internship"=>"Internship"];
+			$experience_arr = ["entry-level"=>"Entry Level", "mid-level"=>"Mid Level", "senior-level"=>"Senior Level"];
+			$category_arr = ["jobFunctionAcct"=>"Accounting", "jobFunctionAdmn"=>"Administrative", 
+			"jobFunctionCre"=>"Arts and Design", 
+			"jobFunctionBd"=>"Business Development", 
+			"jobFunctionCss"=>"Community & Social Services", 
+			"jobFunctionCnsl"=>"Consulting",
+			"jobFunctionEdu"=>"Education",
+			"jobFunctionEng"=>"Engineering",
+			"jobFunctionEnt"=>"Entrepreneurship",
+			"jobFunctionFinc"=>"Finance",
+			"jobFunctionMd"=>"Healthcare Services",
+			"jobFunctionHr"=>"Human Resources",
+			"jobFunctionIt"=>"Information Technology",
+			"jobFunctionLgl"=>"Legal",
+			"jobFunctionMktg"=>"Marketing",
+			"jobFunctionPr"=>"Media & Communications",
+			"jobFunctionMps"=>"Military & Protective Services",
+			"jobFunctionOps"=>"Operations",
+			"jobFunctionProd"=>"Product Management",
+			"jobFunctionPpm"=>"Program & Product Management",
+			"jobFunctionBuy"=>"Purchasing",
+			"jobFunctionQa"=>"Quality Assurance",
+			"jobFunctionRe"=>"Real Estate",
+			"jobFunctionAcad"=>"Research",
+			"jobFunctionSale"=>"Sales",
+			"jobFunctionSupp"=>"Support"];
 			 
 		?>
  
@@ -71,8 +101,18 @@
 			</tr>
 			<br>
 			<tr>
+				<td style="width:15%">Location</td>
+				<td><strong><?php echo htmlspecialchars($address) . ", " . htmlspecialchars($city) . ", " . htmlspecialchars($state); ?></strong></td>
+			</tr>
+			<br>
+			<tr>
 				<td style="width:15%">Position Type</td>
-				<td><strong><?php echo htmlspecialchars($positionType, ENT_QUOTES);  ?></strong></td>
+				<td><strong><?php echo htmlspecialchars($position_arr[$positionType], ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<br>
+			<tr>
+				<td style="width:15%">Position Category</td>
+				<td><strong><?php echo htmlspecialchars($category_arr[$category], ENT_QUOTES);  ?></strong></td>
 			</tr>
 			<br>
 			<tr>
@@ -82,7 +122,7 @@
 			<br>
 			<tr>
 				<td style="width:15%">Experience Level</td>
-				<td><strong><?php echo htmlspecialchars($experienceLevel, ENT_QUOTES);  ?></strong></td>
+				<td><strong><?php echo htmlspecialchars($experience_arr[$experienceLevel], ENT_QUOTES);  ?></strong></td>
 			</tr>
 			<br>
 			<tr>
@@ -93,7 +133,13 @@
 				<td><strong><?php echo htmlspecialchars($jobDescription, ENT_QUOTES);  ?></strong></td>
 			</tr>
 			<tr>
-				<td></td>
+				<td>Contact Email</td>
+				<td><strong><?php echo htmlspecialchars($contactEmail, ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<br>
+			<tr>
+				<td style="width:15%">Website</td>
+				<td><strong><?php echo htmlspecialchars($website, ENT_QUOTES);  ?></strong></td>
 			</tr>
 		</table>
  

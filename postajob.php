@@ -16,7 +16,7 @@ $companyID = (mysqli_fetch_row($companyID_object))[0];
 echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 
 // Escape user inputs for security
-
+$contactEmail = mysqli_real_escape_string($link, $_REQUEST['contactEmail']);
 $address = mysqli_real_escape_string($link, $_REQUEST['address']);
 $city = mysqli_real_escape_string($link, $_REQUEST['city']);
 $state = mysqli_real_escape_string($link, $_REQUEST['state']);
