@@ -41,7 +41,7 @@
 			$id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
 			
 			if (!$jobSeekerID){
-				echo "ERROR: Record ID not found";
+				echo "ERROR: Please log in to view this job posting";
 				exit;
 			};
 			 
@@ -91,6 +91,9 @@
 			<tr>
 				<td></td>
 				<td><strong><?php echo htmlspecialchars($jobDescription, ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<tr>
+				<td></td>
 			</tr>
 		</table>
  
