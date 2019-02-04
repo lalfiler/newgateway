@@ -39,9 +39,16 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
     <div class="container">
         <h1>Welcome to the Employer's Dashboard</h1>
         <div class="options">
-            <a href="postajob.html" target="_blank">Add Job</a>
-            <a href="new_event.html" target="_blank">Add Event</a>
-            <a href="myjobs.php" target="_blank">View Profile</a>
+			<table style="margin-left:auto; margin-right:auto">
+				<tr>
+					<td align="center"><a href="postajob.html" target="_blank">Add Job</a></td>
+					<td align="center"><a href="new_event.html" target="_blank">Add Event</a><td>
+				</tr>
+				<tr>
+					<td style="padding-top: 30px"><a href="myjobs.php" target="_blank">View My Jobs</a></td>
+					<td style="padding-top: 30px"><a href="myevents.php" target="_blank">View My Events</a></td>
+				</tr>
+			</table>
         </div>
         <!-- <div id="form">
             <form class="form search" action="search.html" method="post">
