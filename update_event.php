@@ -67,17 +67,16 @@
 				$city=htmlspecialchars(strip_tags($_POST['city']));
 				$state=htmlspecialchars(strip_tags($_POST['state']));
 				$zip=htmlspecialchars(strip_tags($_POST['zip']));
-				$jobTitle=htmlspecialchars(strip_tags($_POST['jobTitle']));
-				$positionType=htmlspecialchars(strip_tags($_POST['positionType']));
-				$experienceLevel=htmlspecialchars(strip_tags($_POST['experienceLevel']));
-				$category=htmlspecialchars(strip_tags($_POST['category']));
-				$salary=htmlspecialchars(strip_tags($_POST['salary']));
+				$title=htmlspecialchars(strip_tags($_POST['title']));
+				$date=htmlspecialchars(strip_tags($_POST['date']));
+				$timeStart=htmlspecialchars(strip_tags($_POST['timeStart']));
+				$timeEnd=htmlspecialchars(strip_tags($_POST['timeEnd']));
 				$website=htmlspecialchars(strip_tags($_POST['website']));
-				$jobDescription=htmlspecialchars(strip_tags($_POST['jobDescription']));
+				$description=htmlspecialchars(strip_tags($_POST['description']));
 		 
 				// write update query
 				$query = "UPDATE events 
-							SET address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', jobTitle='" .$jobTitle. "', positionType='" .$positionType. "', experienceLevel='" .$experienceLevel. "', category='" .$category. "', salary='" .$salary. "', website='" .$website. "', jobDescription='" .$jobDescription. "'
+							SET address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', title='" .$title. "', date='" .$date. "', timeStart='" .$timeStart. "', timeEnd='" .$timeEnd. "', website='" .$website. "', description='" .$description. "'
 							WHERE id ='" .$id. "'";
 		 
 				// prepare query for execution
@@ -104,34 +103,34 @@
             <fieldset>
                  <div class="right">
                     <div>
-                        <label for="eventTitle">Event Title:</label>
+                        <label for="title">Event Title:</label>
                         <br>
-                        <input type="text" id="eventTitle" name="eventTitle" value="<?php echo htmlspecialchars($title, ENT_QUOTES); ?>">
+                        <input type="text" id="title" name="title" value="<?php echo htmlspecialchars($title, ENT_QUOTES); ?>">
                     </div>
 					<div>
-                        <label for="eventDescription">Event Description:</label>
+                        <label for="description">Event Description:</label>
                         <br>
-                        <textarea name="eventDescription" id="eventDescription" ><?php echo htmlspecialchars($description); ?></textarea>
+                        <textarea name="description" id="description" ><?php echo htmlspecialchars($description); ?></textarea>
                     </div>
 					<div>
-						<label for="eventDate">Event Date:</label>
+						<label for="date">Event Date:</label>
 						<br>
-						<input type="date" id="eventDate" name="eventDate" value="<?php echo htmlspecialchars($date, ENT_QUOTES); ?>">
+						<input type="date" id="date" name="date" value="<?php echo htmlspecialchars($date, ENT_QUOTES); ?>">
 					</div>
 					<div>
-						<label for="eventTimeStart">Time Start:</label>
+						<label for="timeStart">Time Start:</label>
 						<br>
-						<input type="time" id="eventTimeStart" name="eventTimeStart" value="<?php echo htmlspecialchars($timeStart, ENT_QUOTES); ?>">
+						<input type="time" id="timeStart" name="timeStart" value="<?php echo htmlspecialchars($timeStart, ENT_QUOTES); ?>">
 					</div>
 					<div>
-						<label for="eventTimeEnd">Time End:</label>
+						<label for="timeEnd">Time End:</label>
 						<br>
-						<input type="time" id="eventTimeEnd" name="eventTimeEnd" value="<?php echo htmlspecialchars($timeEnd, ENT_QUOTES); ?>">
+						<input type="time" id="timeEnd" name="timeEnd" value="<?php echo htmlspecialchars($timeEnd, ENT_QUOTES); ?>">
 					</div>
 					<div>
-                        <label for="contactEmail">Contact Email:</label>
+                        <label for="email">Contact Email:</label>
                         <br>
-                        <input type="text" id="contactEmail" name="contactEmail" value="<?php echo htmlspecialchars($email, ENT_QUOTES); ?>">
+                        <input type="text" id="email" name="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES); ?>">
                     </div>
                     <div>
                         <label for="address">Event Address:</label>
