@@ -14,7 +14,7 @@
     <div class="container">
   
         <div class="page-header">
-            <h1>Job Details</h1>
+            <h1>Edit My Job</h1>
         </div>
          
 		<?php
