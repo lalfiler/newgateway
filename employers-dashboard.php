@@ -40,7 +40,7 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
         <h1>Welcome to the Employer's Dashboard</h1>
         <div class="options">
             <a href="postajob.html" target="_blank">Add Job</a>
-            <a href="events.html" target="_blank">Add Event</a>
+            <a href="new_event.html" target="_blank">Add Event</a>
             <a href="myjobs.php" target="_blank">View Profile</a>
         </div>
         <!-- <div id="form">
