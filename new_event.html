@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Post an Event</title>
+    <link rel="stylesheet" href="css/job-posting.css" type="text/css">
+</head>
+<body>
+    <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
+    <h1>Post an Event</h1>
+    <div id="form">
+        <form action="postajob.php" method="post">
+            <fieldset>
+                <div class="right">
+                    <div>
+                        <label for="eventTitle">Event Title:</label>
+                        <br>
+                        <input type="text" id="eventTitle" name="eventTitle" placeholder="Job Fair">
+                    </div>
+					<div>
+                        <label for="eventDescription">Event Description:</label>
+                        <br>
+                        <textarea name="eventDescription" id="eventDescription"></textarea>
+                    </div>
+					<div>
+						<label for="eventDate">Event Date:</label>
+						<br>
+						<input type="date" id="eventDate" name="eventDate">
+					</div>
+					<div>
+						<label for="eventTimeStart">Time Start:</label>
+						<br>
+						<input type="time" id="eventTimeStart" name="eventTimeStart">
+					</div>
+					<div>
+						<label for="eventTimeEnd">Time End:</label>
+						<br>
+						<input type="time" id="eventTimeEnd" name="eventTimeEnd">
+					</div>
+					<div>
+                        <label for="contactEmail">Contact Email:</label>
+                        <br>
+                        <input type="text" id="contactEmail" name="contactEmail" placeholder="j.doe@gmail.com">
+                    </div>
+                    <div>
+                        <label for="address">Event Address:</label>
+                        <br>
+                        <input type="text" id="address" name="address" placeholder="49 3rd Ave">
+                    </div>
+                    <div>
+                        <label for="city">City:</label>
+                        <br>
+                        <input type="text" id="city" name="city" placeholder="Chula Vista">
+                    </div>
+                    <div>
+                        <label for="state">State:</label>
+                        <br>
+                        <input type="text" id="state" name="state" placeholder="CA">
+                    </div>
+                    <div>
+                        <label for="zip">ZipCode:</label>
+                        <br>
+                        <input type="text" id="zip" name="zip" placeholder="91910">
+                    </div>
+                    <div>
+                        <label for="website">Website:</label>
+                        <br>
+                        <input type="url" id="website" name="website" placeholder="https://www.newgateway.org/">
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <input type="submit" id="submit" class="submit">
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2018 New GateWay Solutions Corporation</p>
+    </footer>
+</body>
+</html>
