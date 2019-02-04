@@ -34,7 +34,7 @@ VALUES ('$companyID', '$address', '$city', '$state', '$zip', '$eventTitle', '$we
 
 if(mysqli_query($link, $sql)){
     echo "Records added successfully.";
-	header('location: myjobs.php');
+	header('location: myevents.php');
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
