@@ -39,6 +39,16 @@
 			// get passed parameter value, in this case, the record ID
 			// isset() is a PHP function used to verify if a value is there or not
 			$id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
+			
+			//verify the correct company is viewing the job
+			$jobCompany_object = mysqli_query($link, "SELECT companyID from postajob WHERE id= '" . $id . "' LIMIT 1 ");
+			$jobCompany = (mysqli_fetch_row($jobCompany_object))[0];
+			echo "<script> console.log('companyID of the job is: " . $jobCompany . "!')</script>";
+			
+			if ($jobCompany != $companyID){
+				echo "ERROR: Record ID not found";
+				exit;
+			};
 			 
 			// read current record's data
 			// prepare select query
