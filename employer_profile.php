@@ -45,20 +45,19 @@
 			 
 			// read current record's data
 			// prepare select query
-			$query = mysqli_query($link, "SELECT * FROM employerss WHERE id = '" . $employerID . "' LIMIT 1");
+			$query = mysqli_query($link, "SELECT * FROM employers WHERE id = '" . $companyID . "' LIMIT 1");
 			$row = mysqli_fetch_assoc($query);
 		 
-			$company = $row['Company'];
-			$firstName = $row['firstName'];
-			$lastName = $row['lastName'];
-			$address = $row['Address'];
-			$city = $row['City'];
-			$state = $row['State'];
+			$company = $row['companyName'];
+			$website = $row['website'];
+			$address = $row['address'];
+			$city = $row['city'];
+			$state = $row['state'];
 			$zip = $row['zip'];
-			$telephone = $row['Telephone'];
-			$email = $row['Email'];
+			$telephone = $row['telephone'];
+			$email = $row['email'];
 			$userName = $row['userName'];
-			$linkedIn = $row['LinkedIn'];
+			$linkedIn = $row['linkedIn'];
 			 
 		// check if form was submitted
 		if($_POST){
@@ -66,21 +65,21 @@
 			try{
 			 
 				// posted values
-				$firstName=htmlspecialchars(strip_tags($_POST['firstName']));
-				$lastName=htmlspecialchars(strip_tags($_POST['lastName']));
-				$address=htmlspecialchars(strip_tags($_POST['Address']));
-				$city=htmlspecialchars(strip_tags($_POST['City']));
-				$state=htmlspecialchars(strip_tags($_POST['State']));
+				$company=htmlspecialchars(strip_tags($_POST['company']));
+				$website=htmlspecialchars(strip_tags($_POST['website']));
+				$address=htmlspecialchars(strip_tags($_POST['address']));
+				$city=htmlspecialchars(strip_tags($_POST['city']));
+				$state=htmlspecialchars(strip_tags($_POST['state']));
 				$zip=htmlspecialchars(strip_tags($_POST['zip']));
-				$telephone=htmlspecialchars(strip_tags($_POST['Telephone']));
-				$email=htmlspecialchars(strip_tags($_POST['Email']));
+				$telephone=htmlspecialchars(strip_tags($_POST['telephone']));
+				$email=htmlspecialchars(strip_tags($_POST['email']));
 				$userName=htmlspecialchars(strip_tags($_POST['userName']));
-				$linkedIn=htmlspecialchars(strip_tags($_POST['LinkedIn']));
+				$linkedIn=htmlspecialchars(strip_tags($_POST['linkedIn']));
 		 
 				// write update query
-				$query = "UPDATE jobseekers 
-							SET firstName='". $firstName ."', lastName='". $lastName ."', Address='". $address ."', City='" .$city. "', State='" .$state. "', zip='" .$zip. "', Telephone='". $telephone ."', Email='". $email ."', userName='". $userName ."', LinkedIn='" .$linkedIn. "'
-							WHERE id ='" .$jobseekerID. "'";
+				$query = "UPDATE employers
+							SET companyName='". $company ."', website='". $website ."', address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', telephone='". $telephone ."', email='". $email ."', userName='". $userName ."', linkedIn='" .$linkedIn. "'
+							WHERE id ='" .$companyID. "'";
 		 
 				// prepare query for execution
 				$stmt = $link->prepare($query);
@@ -102,62 +101,62 @@
 		?>
  
 		<div id="form">
-        <form action="jobseeker_profile.php" method="post">
+        <form action="employer_profile.php" method="post">
             <fieldset>
-                    <div>
-                        <label for="firstName">First Name:</label>
-                        <br>
-                        <input type="text" id="firstName" name="firstName" value="<?php echo htmlspecialchars($firstName, ENT_QUOTES);  ?>">
-                    </div>
-                    <div>
-                        <label for="lastName">Last Name:</label>
-                        <br>
-                        <input type="text" id="lasName" name="lastName" value="<?php echo htmlspecialchars($lastName, ENT_QUOTES);  ?>">
-                    </div>
-                    <div>
-                        <label for="address">Address:</label>
-                        <br>
-                        <input type="text" id="address" name="Address" value="<?php echo htmlspecialchars($address, ENT_QUOTES);  ?>">
-                    </div>
-                    <div>
-                        <label for="city">City:</label>
-                        <br>
-                        <input type="text" id="city" name="City" value="<?php echo htmlspecialchars($city, ENT_QUOTES);  ?>">
-                    </div>
-                    <div>
-                        <label for="state">State:</label>
-                        <br>
-                        <input type="text" id="state" name="State" value="<?php echo htmlspecialchars($state, ENT_QUOTES);  ?>">
-                    </div>
-                    <div>
-                        <label for="zipcode">Zipcode:</label>
-                        <br>
-                        <input type="number" id="zipcode" name="zip" value="<?php echo htmlspecialchars($zip, ENT_QUOTES);  ?>">
-                    </div>
-                    <div>
-                        <label for="phone">Phone:</label>
-                        <br>
-                        <input type="tel" id="phone" name="Telephone" value="<?php echo htmlspecialchars($telephone, ENT_QUOTES);  ?>">
-                    </div>
-                    <div>
-                        <label for="email">Email:</label>
-                        <br>
-                        <input type="email" id="email" name="Email" value="<?php echo htmlspecialchars($email, ENT_QUOTES);  ?>">
-                    </div>
-                    <div>
-                        <label for="username">User Name:</label>
-                        <br>
-                        <input type="username" id="username" name="userName" value="<?php echo htmlspecialchars($userName, ENT_QUOTES);  ?>">
-                    </div>
-                    <div>
-                        <label for="linkedin">LinkedIn Profile:</label>
-                        <br>
-                        <input type="url" id="linkedin" name="LinkedIn" value="<?php echo htmlspecialchars($linkedIn, ENT_QUOTES);  ?>">
-                    </div>
-                    <br>
-                    <span>
-                        <input type="submit" id="submit" class="submit">
-                    </span>
+				<div>
+					<label for="company">Company Name:</label>
+					<br>
+					<input type="text" id="company" name="company" value="<?php echo htmlspecialchars($company, ENT_QUOTES);  ?>"">
+				</div>
+				<div>
+					<label for="website">Company Website:</label>
+					<br>
+					<input type="text" id="website" name="website" value="<?php echo htmlspecialchars($website, ENT_QUOTES);  ?>">
+				</div>
+				<div>
+					<label for="address">Address:</label>
+					<br>
+					<input type="text" id="address" name="address" value="<?php echo htmlspecialchars($address, ENT_QUOTES);  ?>">
+				</div>
+				<div>
+					<label for="city">City:</label>
+					<br>
+					<input type="text" id="city" name="city" value="<?php echo htmlspecialchars($city, ENT_QUOTES);  ?>">
+				</div>
+				<div>
+					<label for="state">State:</label>
+					<br>
+					<input type="text" id="state" name="state" value="<?php echo htmlspecialchars($state, ENT_QUOTES);  ?>">
+				</div>
+				<div>
+					<label for="zipcode">Zipcode:</label>
+					<br>
+					<input type="number" id="zipcode" name="zip" value="<?php echo htmlspecialchars($zip, ENT_QUOTES);  ?>"
+				</div>
+				<div>
+					<label for="phone">Phone:</label>
+					<br>
+					<input type="tel" id="phone" name="telephone" value="<?php echo htmlspecialchars($telephone, ENT_QUOTES);  ?>">
+				</div>
+				<div>
+					<label for="email">Email:</label>
+					<br>
+					<input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES);  ?>">
+				</div>
+				<div>
+					<label for="username">User Name:</label>
+					<br>
+					<input type="username" id="username" name="userName" value="<?php echo htmlspecialchars($userName, ENT_QUOTES);  ?>">
+				</div>
+				<div>
+					<label for="linkedin">Corporate LinkedIn Profile:</label>
+					<br>
+					<input type="url" id="linkedin" name="linkedIn" value="<?php echo htmlspecialchars($linkedIn, ENT_QUOTES);  ?>">
+				</div>
+				<br>
+				<span>
+					<input type="submit" id="submit" class="submit">
+				</span>
             </fieldset>
         </form>
     </div>

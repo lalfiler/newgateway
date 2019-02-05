@@ -35,6 +35,9 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
 		<form action="logout.php" class="logout" style="inline-block">
 			<input class="submit" type="submit" value="Log Out">
 		</form>
+		<form action="employer_profile.php" class="logout" style="inline-block">
+			<input class="submit" type="submit" value="My Profile">
+		</form>
 	</div>
     <div class="container">
         <h1>Welcome to the Employer's Dashboard</h1>
