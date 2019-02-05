@@ -1,14 +1,83 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Employer's Registration</title>
+    <link rel="stylesheet" href="css/registration.css" type="text/css">
+</head>
 <body>
-
-<form action="employer_table_updater.php" method="post">
-Employer Email: <input type="email" name="employer_email" id="emloyer_email"><br><br>
-Employer Password: <input type="password" name="employer_password" id="employer_password"><br><br>
-<br><br>
-
-
-<input type="submit" name="submit">
-</form>
-
+    <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
+    <h1>Employer's Registration</h1>
+    <div id="form">
+        <form action="employer.php" method="post">
+            <fieldset>
+					<div>
+                        <label for="company">Company Name:</label>
+                        <br>
+                        <input type="text" id="company" name="company" placeholder="New GateWay Solutions Corporation">
+                    </div>
+					<div>
+                        <label for="website">Company Website:</label>
+                        <br>
+                        <input type="text" id="website" name="website" placeholder="https://newgateway.org/">
+                    </div>
+                    <div>
+                        <label for="address">Address:</label>
+                        <br>
+                        <input type="text" id="address" name="address" placeholder="49 3rd Ave">
+                    </div>
+                    <div>
+                        <label for="city">City:</label>
+                        <br>
+                        <input type="text" id="city" name="city" placeholder="Chula Vista">
+                    </div>
+                    <div>
+                        <label for="state">State:</label>
+                        <br>
+                        <input type="text" id="state" name="state" placeholder="CA">
+                    </div>
+                    <div>
+                        <label for="zipcode">Zipcode:</label>
+                        <br>
+                        <input type="number" id="zipcode" name="zip" placeholder="91910">
+                    </div>
+                    <div>
+                        <label for="phone">Phone:</label>
+                        <br>
+                        <input type="tel" id="phone" name="telephone" placeholder="888-888-8888">
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <br>
+                        <input type="email" id="email" name="email" placeholder="youremail@email.com">
+                    </div>
+                    <div>
+                        <label for="username">User Name:</label>
+                        <br>
+                        <input type="username" id="username" name="userName" placeholder="jDoe">
+                    </div>
+                    <div>
+                        <label for="password">Password:</label>
+                        <br>
+                        <input type="password" id="password" name="password" placeholder="Password">
+                    </div>
+                    <div>
+                        <label for="linkedin">Corporate LinkedIn Profile:</label>
+                        <br>
+                        <input type="url" id="linkedin" name="linkedIn" placeholder="https://www.linkedin.com/company/new-gateway-solutions-corporation">
+                    </div>
+                    <br>
+                    <span>
+                        <input type="submit" id="submit" class="submit">
+                        <input type="reset" id="reset" class="reset">
+                    </span>
+            </fieldset>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2018 New GateWay Solutions Corporation</p>
+    </footer>
 </body>
 </html>

@@ -8,27 +8,24 @@ if($link === false){
 }
  
 // Escape user inputs for security
-$Company = mysqli_real_escape_string($link, $_REQUEST['Company']);
-$comWebsite = mysqli_real_escape_string($link, $_REQUEST['comWebsite']);
-$LinkedIn = mysqli_real_escape_string($link, $_REQUEST['LinkedIn']);
-$Industry = mysqli_real_escape_string($link, $_REQUEST['Industry']);
-$firstName = mysqli_real_escape_string($link, $_REQUEST['firstName']);
-$lastName = mysqli_real_escape_string($link, $_REQUEST['lastName']);
-$Address = mysqli_real_escape_string($link, $_REQUEST['Address']);
-$City = mysqli_real_escape_string($link, $_REQUEST['City']);
-$State = mysqli_real_escape_string($link, $_REQUEST['State']);
+$company = mysqli_real_escape_string($link, $_REQUEST['company']);
+$website = mysqli_real_escape_string($link, $_REQUEST['website']);
+$linkedIn = mysqli_real_escape_string($link, $_REQUEST['linkedIn']);
+$address = mysqli_real_escape_string($link, $_REQUEST['address']);
+$city = mysqli_real_escape_string($link, $_REQUEST['city']);
+$state = mysqli_real_escape_string($link, $_REQUEST['state']);
 $zip = mysqli_real_escape_string($link, $_REQUEST['zip']);
-$Telephone = mysqli_real_escape_string($link, $_REQUEST['Telephone']);
-$Email = mysqli_real_escape_string($link, $_REQUEST['Email']);
+$telephone = mysqli_real_escape_string($link, $_REQUEST['telephone']);
+$email = mysqli_real_escape_string($link, $_REQUEST['email']);
 $userName = mysqli_real_escape_string($link, $_REQUEST['userName']);
 $password = mysqli_real_escape_string($link, $_REQUEST['password']);
 
 // Attempt insert query execution
 $passwordHash = hash('sha256', $password);
-$sql = "INSERT INTO employers (Company, comWebsite, LinkedIn, Industry, firstName, lastName, Address, City, State, zip, Telephone, Email, userName, password) 
-VALUES ('$Company', '$comWebsite', '$LinkedIn', '$Industry', '$firstName', '$lastName', '$Address', '$City', '$State', '$zip', '$Telephone', '$Email', '$userName', '$passwordHash')";
+$sql = "INSERT INTO employers (companyName, website, linkedIn, address, city, state, zip, telephone, email, userName, password) 
+VALUES ('$company', '$website', '$linkedIn', '$address', '$city', '$state', '$zip', '$telephone', '$email', '$userName', '$passwordHash')";
 if(mysqli_query($link, $sql)){
-    header('location: employers-dashboard.html');
+    header('location: employers-dashboard.php');
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
