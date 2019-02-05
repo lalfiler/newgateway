@@ -16,7 +16,12 @@
         <div class="page-header">
             <h1>Edit My Profile</h1>
         </div>
-         
+        
+		<div style="display: block; text-align:center">
+			<form action="edit_password_jobseeker.php">
+				<input class="submit" type="submit" value="Change Password"  style="width:100%">
+			</form>
+		</div>
 		<?php
 		
 			//include_once 'accesscontrol.php';
