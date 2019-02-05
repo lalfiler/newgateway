@@ -25,7 +25,10 @@ $passwordHash = hash('sha256', $password);
 $sql = "INSERT INTO employers (companyName, website, linkedIn, address, city, state, zip, telephone, email, userName, password) 
 VALUES ('$company', '$website', '$linkedIn', '$address', '$city', '$state', '$zip', '$telephone', '$email', '$userName', '$passwordHash')";
 if(mysqli_query($link, $sql)){
+	session_start();
+	$_SESSION['email'] = $email;
     header('location: employers-dashboard.php');
+	exit();
 } else{
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
 }
