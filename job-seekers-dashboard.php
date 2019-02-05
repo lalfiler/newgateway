@@ -35,8 +35,8 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
 		<form action="logout.php" class="logout" style="inline-block">
 			<input class="submit" type="submit" value="Log Out">
 		</form>
-		<form action="edit_password_jobseeker.php" class="logout" style="inline-block">
-			<input class="submit" type="submit" value="Change Password">
+		<form action="jobseeker_profile.php" class="logout" style="inline-block">
+			<input class="submit" type="submit" value="My Profile">
 		</form>
 	</div>
     <div class="container">
