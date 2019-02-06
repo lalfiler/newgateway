@@ -11,9 +11,9 @@
     <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
     <h1>My Events</h1>
 	
-	<br>
-	<a href="edit_password_employer.php">Edit My Password</a>
-	<br>
+	<form action="employers-dashboard.php">
+		<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+	</form>
 
 <?php
 	session_start();
