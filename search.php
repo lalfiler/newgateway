@@ -9,6 +9,9 @@
 </head>
 <body>
     <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
+	<form action="job-seekers-dashboard.php">
+		<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+	</form>
     <h1>My Job Search Results</h1>
 	
 <?php
@@ -29,7 +32,7 @@
 		while($row = $result->fetch_assoc()) {
 			$timeStamp = $row['updatedAt'];
 			$timeStamp = date( "m/d/Y", strtotime($timeStamp));
-			echo "<tr><td>".$timeStamp."</td><td><a href='view_job.php?id=".$row["id"]."'>".$row["jobTitle"]."</a></td><td>".$row["zip"]."</td></tr>";
+			echo "<tr><td>".$timeStamp."</td><td><a href='view_job.php?id=".$row["id"]."' target='_blank'>".$row["jobTitle"]."</a></td><td>".$row["zip"]."</td></tr>";
 			echo "<tr><td>".$row["jobDescription"]."</td></tr>";
 		}
 		echo "</table>";
