@@ -9,7 +9,10 @@
 </head>
 <body>
  
- 
+	<form action="job-seekers-dashboard.php">
+		<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+	</form>
+	
     <!-- container -->
     <div class="container">
   

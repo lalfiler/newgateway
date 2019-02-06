@@ -9,6 +9,11 @@
 </head>
 <body>
     <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
+	
+	<form action="job-seekers-dashboard.php">
+		<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+	</form>
+	
     <h1>Upcoming Events</h1>
 	
 <?php
@@ -39,7 +44,7 @@
 			<br>
 			$time
 			<br>
-			<a href='event.php?id={$eventID}' class='button'>View Event</a>
+			<a href='view_event.php?id={$eventID}' class='button'>View Event</a>
 			<hr>
 			<br>";
 		};
