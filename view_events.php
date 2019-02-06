@@ -20,7 +20,6 @@
 	}
 	$query = mysqli_query($link, "SELECT * FROM events");
 	$num_rows = mysqli_num_rows($query);
-	//$link->close();
 	
 	echo "<b>
 	</b>
@@ -31,16 +30,19 @@
 		$date = $row['date'];
 		$time = $row['timeStart'];
 		$eventID = $row['id'];
-		echo "<b>
-		$title
-		<br>
-		$date 
-		<br>
-		$time
-		<br>
-		<a href='event.php?id={$eventID}' class='button'>View Event</a>
-		<hr>
-		<br>";
+		if(strtotime($date) >= time()) {
+			// date is in the future or present
+			echo "<b>
+			$title
+			<br>
+			$date 
+			<br>
+			$time
+			<br>
+			<a href='event.php?id={$eventID}' class='button'>View Event</a>
+			<hr>
+			<br>";
+		};
 	}
 ?>
 
