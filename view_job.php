@@ -13,10 +13,13 @@
   
         <div class="page-header">
             <h1>Job Details</h1>
+			
+			<form action="job-seekers-dashboard.php">
+				<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+			</form>
         </div>
-		
-		<a href='search.php' class='btn btn-danger'>Back to my job search</a>
          
+		 
 		<?php
 		
 			//include_once 'accesscontrol.php';

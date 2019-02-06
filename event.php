@@ -15,6 +15,9 @@
   
         <div class="page-header">
             <h1>Event Details</h1>
+			<form action="employers-dashboard.php">
+				<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+			</form>
         </div>
          
 		<?php

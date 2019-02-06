@@ -38,7 +38,7 @@
 					
 		?>
  
-		<form method="POST" action="change_password_jobseeker.php">
+		<form method="POST" action="change_password_jobseeker.php" id="form">
 			<div>
 				<label for="oldPassword">Old Password:</label>
 				<br>

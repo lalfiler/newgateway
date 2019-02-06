@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	$email = $_SESSION['email'];
-	echo "<script> console.log('Hello, " . $email . "! ')</script>";
 	
 	$link = mysqli_connect("localhost", "root", "", "job_board_db");
 
@@ -13,7 +12,6 @@
 	// Grab company from database
 	$jobSeekerID_object = mysqli_query($link, "SELECT id from jobseekers WHERE email = '".$email."'");
 	$jobSeekerID = (mysqli_fetch_row($jobSeekerID_object))[0];
-	echo "<script> console.log('jobSeekerID is: " . $jobSeekerID . "!')</script>";
 			
 	$oldPassword = $_POST['oldPassword'];
 	$newPassword = $_POST['newPassword'];
