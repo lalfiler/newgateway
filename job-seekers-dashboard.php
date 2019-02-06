@@ -51,7 +51,7 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
                 <input class="submit" type="submit" value="Search">
             </form>
         </div>
-        <p class="events"><a href="#">Upcoming events</a></p>
+        <p class="events"><a href="view_events.php">Upcoming events</a></p>
         </div>
     <footer>
         <p>&copy; 2018 New GateWay Solutions Corporation</p>

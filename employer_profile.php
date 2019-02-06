@@ -80,6 +80,7 @@
 				$query = "UPDATE employers
 							SET companyName='". $company ."', website='". $website ."', address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', telephone='". $telephone ."', email='". $email ."', userName='". $userName ."', linkedIn='" .$linkedIn. "'
 							WHERE id ='" .$companyID. "'";
+							
 		 
 				// prepare query for execution
 				$stmt = $link->prepare($query);
