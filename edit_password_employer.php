@@ -50,27 +50,30 @@
 				};
 			?>
 		</div>
- 
-		<form method="POST" action="change_password_employer.php">
-			<div>
-				<label for="oldPassword">Old Password:</label>
-				<br>
-				<input type="text" id="oldPassword" name="oldPassword">
-			</div>
-			<div>
-				<label for="newPassword">New Password:</label>
-				<br>
-				<input type="text" id="newPassword" name="newPassword">
-			</div>
-			<div>
-				<label for="newPasswordConfirm">Confirm New Password:</label>
-				<br>
-				<input type="text" id="newPasswordConfirm" name="newPasswordConfirm">
-			</div>
-			<div>
-				<input type="submit" id="submit" class="submit">
-			</div>
-		</form>
+		<div id="form">
+			<form method="POST" action="change_password_employer.php">
+				<fieldset>
+					<div>
+						<label for="oldPassword">Old Password:</label>
+						<br>
+						<input type="text" id="oldPassword" name="oldPassword">
+					</div>
+					<div>
+						<label for="newPassword">New Password:</label>
+						<br>
+						<input type="text" id="newPassword" name="newPassword">
+					</div>
+					<div>
+						<label for="newPasswordConfirm">Confirm New Password:</label>
+						<br>
+						<input type="text" id="newPasswordConfirm" name="newPasswordConfirm">
+					</div>
+					<div>
+						<input type="submit" id="submit" class="submit">
+					</div>
+				</fieldset>
+			</form>
+		</div>
  
     </div> <!-- end .container -->
      
