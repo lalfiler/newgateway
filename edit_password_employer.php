@@ -44,9 +44,9 @@
 		<div>
 			<?php 
 				if ($status == "new-nomatch"){
-					echo "New password confirmation does not match. Please try again.";
+					echo "<p style='color: #fff; background-color: rgba(255, 0, 0, 0.6); text-align:center'>New password and password confirmation do not match. Please try again.</p>";
 				} elseif ($status == "old-nomatch"){
-					echo "Old password does not match our records. Please try again.";
+					echo "<p style='color: #fff; background-color: rgba(255, 0, 0, 0.6); text-align:center'>Old password does not match our records. Please try again.</p>";
 				};
 			?>
 		</div>

@@ -47,8 +47,8 @@ if(isset($_GET['status'])){
         <h1>Welcome to the Employer's Dashboard</h1>
 		<?php 
 			if($status == "password"){
-				echo "Password Successfully Updated!";
-			};
+				echo "<p style='color: #fff; background-color: rgba(0, 255, 0, 0.6); text-align:center'>Password Successfully Updated!</p>";
+				};
 		?>
         <div class="options">
 			<table style="margin-left:auto; margin-right:auto">
