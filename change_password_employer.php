@@ -34,17 +34,15 @@
 			$stmt = $link->prepare($query);
 			
 			if($stmt->execute()){
-				echo "Success! Password has been updated";
+				header('location: employers-dashboard.php?status=password');
 			}else {
 				echo "Unable to update password. Please try again.";
 			};
 		} else {
-			echo "<script> console.log('NEW passwords DO NOT match!');</script>";
-			echo "New password entered does not match new password confirmation. Please try again";
+			header('location: edit_password_employer.php?status=new-nomatch');
 		}
 	} else {
-		echo "<script> console.log('passwords DO NOT match!');</script>";
-		echo "Old Password entered does not match our records.  Please try again";
+		header('location: edit_password_employer.php?status=old-nomatch');
 	};
 
 ?>

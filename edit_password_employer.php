@@ -22,7 +22,11 @@
 			//include_once 'accesscontrol.php';
 			session_start();
 			$email = $_SESSION['email'];
-			echo "<script> console.log('Hello, " . $email . "! ')</script>";
+			if(isset($_GET['status'])){
+				$status = $_GET['status']; 
+			} else{
+				$status = null;
+			};
 			
 			$link = mysqli_connect("localhost", "root", "", "job_board_db");
 	 
@@ -37,6 +41,15 @@
 			echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 					
 		?>
+		<div>
+			<?php 
+				if ($status == "new-nomatch"){
+					echo "New password confirmation does not match. Please try again.";
+				} elseif ($status == "old-nomatch"){
+					echo "Old password does not match our records. Please try again.";
+				};
+			?>
+		</div>
  
 		<form method="POST" action="change_password_employer.php">
 			<div>
