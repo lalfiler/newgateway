@@ -13,16 +13,18 @@
   
         <div class="page-header">
             <h1>Job Details</h1>
+			
+			<form action="job-seekers-dashboard.php">
+				<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+			</form>
         </div>
-		
-		<a href='search.php' class='btn btn-danger'>Back to my job search</a>
          
+		 
 		<?php
 		
 			//include_once 'accesscontrol.php';
 			session_start();
 			$email = $_SESSION['email'];
-			echo "<script> console.log('Hello, " . $email . "! ')</script>";
 			
 			$link = mysqli_connect("localhost", "root", "", "job_board_db");
 	 
@@ -34,7 +36,6 @@
 			// Grab company from database
 			$jobSeekerID_object = mysqli_query($link, "SELECT id from jobseekers WHERE email = '".$email."'");
 			$jobSeekerID = (mysqli_fetch_row($jobSeekerID_object))[0];
-			echo "<script> console.log('companyID is: " . $jobSeekerID . "!')</script>";
 					
 			// get passed parameter value, in this case, the record ID
 			// isset() is a PHP function used to verify if a value is there or not

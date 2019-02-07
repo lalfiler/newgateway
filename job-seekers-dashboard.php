@@ -2,8 +2,11 @@
 //include_once 'accesscontrol.php';
 session_start();
 $email = $_SESSION['email'];
-echo "<script> console.log('Hello, " . $email . "! ')</script>";
-?>
+if(isset($_GET['status'])){
+	$status = $_GET['status']; 
+} else{
+	$status = null;
+};?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,6 +44,11 @@ echo "<script> console.log('Hello, " . $email . "! ')</script>";
 	</div>
     <div class="container">
         <h1>Welcome to the Job Seeker's Dashboard</h1>
+		<?php 
+			if($status == "password"){
+				echo "<p style='color: #fff; background-color: rgba(0, 255, 0, 0.6); text-align:center'>Password Successfully Updated!</p>";
+			};
+		?>
         <div id="form">
             <form class="form search" action="search.php" method="post">
                 <h2>Search for jobs</h2>

@@ -22,7 +22,11 @@
 			//include_once 'accesscontrol.php';
 			session_start();
 			$email = $_SESSION['email'];
-			echo "<script> console.log('Hello, " . $email . "! ')</script>";
+			if(isset($_GET['status'])){
+				$status = $_GET['status']; 
+			} else{
+				$status = null;
+			};
 			
 			$link = mysqli_connect("localhost", "root", "", "job_board_db");
 	 
@@ -34,30 +38,43 @@
 			// Grab company from database
 			$jobSeekerID_object = mysqli_query($link, "SELECT id from jobseekers WHERE email = '".$email."'");
 			$jobSeekerID = (mysqli_fetch_row($jobSeekerID_object))[0];
-			echo "<script> console.log('companyID is: " . $jobSeekerID . "!')</script>";
 					
 		?>
  
-		<form method="POST" action="change_password_jobseeker.php">
-			<div>
-				<label for="oldPassword">Old Password:</label>
-				<br>
-				<input type="text" id="oldPassword" name="oldPassword">
-			</div>
-			<div>
-				<label for="newPassword">New Password:</label>
-				<br>
-				<input type="text" id="newPassword" name="newPassword">
-			</div>
-			<div>
-				<label for="newPasswordConfirm">Confirm New Password:</label>
-				<br>
-				<input type="text" id="newPasswordConfirm" name="newPasswordConfirm">
-			</div>
-			<div>
-				<input type="submit" id="submit" class="submit">
-			</div>
-		</form>
+		<div>
+			<?php 
+				if ($status == "new-nomatch"){
+					echo "<p style='color: #fff; background-color: rgba(255, 0, 0, 0.6); text-align:center'>New password and password confirmation do not match. Please try again.</p>";
+				} elseif ($status == "old-nomatch"){
+					echo "<p style='color: #fff; background-color: rgba(255, 0, 0, 0.6); text-align:center'>Old password does not match our records. Please try again.</p>";
+				};
+			?>
+		</div>
+ 
+		<div id="form">
+			<form method="POST" action="change_password_jobseeker.php">
+				<fieldset>
+					<div>
+						<label for="oldPassword">Old Password:</label>
+						<br>
+						<input type="text" id="oldPassword" name="oldPassword">
+					</div>
+					<div>
+						<label for="newPassword">New Password:</label>
+						<br>
+						<input type="text" id="newPassword" name="newPassword">
+					</div>
+					<div>
+						<label for="newPasswordConfirm">Confirm New Password:</label>
+						<br>
+						<input type="text" id="newPasswordConfirm" name="newPasswordConfirm">
+					</div>
+					<div>
+						<input type="submit" id="submit" class="submit">
+					</div>
+				</fieldset>
+			</form>
+		</div>
  
     </div> <!-- end .container -->
      

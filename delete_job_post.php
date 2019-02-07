@@ -5,7 +5,6 @@ try {
 	//include_once 'accesscontrol.php';
 	session_start();
 	$email = $_SESSION['email'];
-	echo "<script> console.log('Hello, " . $email . "! ')</script>";
 	
 	$link = mysqli_connect("localhost", "root", "", "job_board_db");
 
@@ -17,7 +16,6 @@ try {
 	// Grab company from database
 	$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
 	$companyID = (mysqli_fetch_row($companyID_object))[0];
-	echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 		
     // get record ID
     $id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');

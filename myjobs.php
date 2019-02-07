@@ -18,7 +18,6 @@
 <?php
 	session_start();
 	$email = $_SESSION['email'];
-	echo "<script> console.log('Hello, " . $email . "! ')</script>";
 
 	$link = mysqli_connect("localhost", "root", "", "job_board_db");
 	 
@@ -37,7 +36,6 @@
 	// Grab company from database
 	$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
 	$companyID = (mysqli_fetch_row($companyID_object))[0];
-	echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 
 	// Find company's jobs in database
 	$query = mysqli_query($link, "SELECT * FROM postajob WHERE companyID = '".$companyID."'");
@@ -46,32 +44,48 @@
 
 	$experience_arr = ["entry-level"=>"Entry Level", "mid-level"=>"Mid Level", "senior-level"=>"Senior Level"];
 	
+	$row_counter = 0;
+	
 	echo "<b>
 	</b>
 	<br>
-	<br>";
+	<br>
+	<table style='width:100%'>";
 	while ($row = mysqli_fetch_assoc($query) ){
 		$jobTitle = $row['jobTitle'];
 		$experienceLevel = $row['experienceLevel'];
+		$salary = $row['salary'];
 		$jobID = $row['id'];
-		echo "<b>
-		$jobTitle
-		<br>
-		$experience_arr[$experienceLevel] 
-		<br>
-		<a href='job.php?id={$jobID}' class='button'>View Job</a>
-		<br>
-		<a href='update_job_post.php?id={$jobID}' class='button'>Edit Job</a>
-		<br>
-		<a href='#' onclick='delete_job({$jobID});' class='button'>Delete Job</a></b>
-		<hr>
-		<br>";
+		if (($row_type % 6) < 3){
+			$row_counter = 'odd';
+		} else {
+			$row_counter = 'even';
+		};
+		echo "
+		<tr class=$row_counter>
+			<td><strong>$jobTitle</strong></td>
+			<td><a href='job.php?id={$jobID}' class='button'>View Job</a></td>
+		</tr>
+		<tr class=$row_counter>
+			<td>$experience_arr[$experienceLevel]</td>
+			<td><a href='update_job_post.php?id={$jobID}' class='button'>Edit Job</a></td>
+		</tr>
+		<tr class=$row_counter>
+			<td>$$salary/hr</td>
+			<td><a href='#' onclick='delete_job({$jobID});' class='button'>Delete Job</a></td>
+		</tr>
+		<tr class=$row_counter>
+			<td> </td>
+			<td> </td>
+		</tr>
+		";
+		$row_counter++;
 	}
+	echo "</table>";
 ?>
 
 <script type="text/javascript">
 	function delete_job(id){
-		console.log("delete_job is running!");
 		var confirmation = confirm("Are you sure you want to delete this job posting?");
 		if(confirmation){
 			window.location = 'delete_job_post.php?id=' + id;

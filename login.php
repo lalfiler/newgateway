@@ -1,9 +1,6 @@
 <?php
 //include_once 'accesscontrol.php';
 
-echo "<script>console.log('omg what')</script>";
-
-
 $link = mysqli_connect("localhost", "root", "", "job_board_db");
  
 // Check connection
@@ -20,7 +17,6 @@ $row_employers = mysqli_query($link, $result_employers);
 $result_jobseekers = "SELECT * from jobseekers WHERE email = '".$email."' AND password = '".$password."' limit 1";
 $row_jobseekers = mysqli_query($link, $result_jobseekers);
 
-echo "<script>console.log('Hello! ')</script>";
 
 if(mysqli_num_rows($row_employers) == 1){
 	session_start();

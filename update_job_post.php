@@ -22,7 +22,6 @@
 			//include_once 'accesscontrol.php';
 			session_start();
 			$email = $_SESSION['email'];
-			echo "<script> console.log('Hello, " . $email . "! ')</script>";
 			
 			$link = mysqli_connect("localhost", "root", "", "job_board_db");
 	 
@@ -34,7 +33,6 @@
 			// Grab company from database
 			$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
 			$companyID = (mysqli_fetch_row($companyID_object))[0];
-			echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 					
 			// get passed parameter value, in this case, the record ID
 			// isset() is a PHP function used to verify if a value is there or not
@@ -43,7 +41,6 @@
 			//verify the correct company is viewing the job
 			$jobCompany_object = mysqli_query($link, "SELECT companyID from postajob WHERE id= '" . $id . "' LIMIT 1 ");
 			$jobCompany = (mysqli_fetch_row($jobCompany_object))[0];
-			echo "<script> console.log('companyID of the job is: " . $jobCompany . "!')</script>";
 			
 			if ($jobCompany != $companyID){
 				echo "ERROR: Record ID not found";

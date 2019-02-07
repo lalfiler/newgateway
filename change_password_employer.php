@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	$email = $_SESSION['email'];
-	echo "<script> console.log('Hello, " . $email . "! ')</script>";
 	
 	$link = mysqli_connect("localhost", "root", "", "job_board_db");
 
@@ -13,7 +12,6 @@
 	// Grab company from database
 	$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
 	$companyID = (mysqli_fetch_row($companyID_object))[0];
-	echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 			
 	$oldPassword = $_POST['oldPassword'];
 	$newPassword = $_POST['newPassword'];
@@ -25,26 +23,22 @@
 	$oldPasswordDB = (mysqli_fetch_row($oldPasswordDB_object))[0];
 	
 	if ($oldPasswordHashed == $oldPasswordDB){
-		echo "<script> console.log('passwords match!');</script>";
 		if ($newPassword == $newPasswordConfirm){
-			echo "<script> console.log('NEW passwords match! update database!');</script>";
 			$newPasswordHashed = hash("sha256", $newPassword);
 			$query = "UPDATE employers SET password='" . $newPasswordHashed . "' WHERE email ='" . $email . "'";
 			
 			$stmt = $link->prepare($query);
 			
 			if($stmt->execute()){
-				echo "Success! Password has been updated";
+				header('location: employers-dashboard.php?status=password');
 			}else {
 				echo "Unable to update password. Please try again.";
 			};
 		} else {
-			echo "<script> console.log('NEW passwords DO NOT match!');</script>";
-			echo "New password entered does not match new password confirmation. Please try again";
+			header('location: edit_password_employer.php?status=new-nomatch');
 		}
 	} else {
-		echo "<script> console.log('passwords DO NOT match!');</script>";
-		echo "Old Password entered does not match our records.  Please try again";
+		header('location: edit_password_employer.php?status=old-nomatch');
 	};
 
 ?>
