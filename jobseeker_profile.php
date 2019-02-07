@@ -30,7 +30,6 @@
 			//include_once 'accesscontrol.php';
 			session_start();
 			$email = $_SESSION['email'];
-			echo "<script> console.log('Hello, " . $email . "! ')</script>";
 			
 			$link = mysqli_connect("localhost", "root", "", "job_board_db");
 	 
@@ -42,7 +41,6 @@
 			// Grab company from database
 			$jobseekerID_object = mysqli_query($link, "SELECT id from jobseekers WHERE email = '".$email."'");
 			$jobseekerID = (mysqli_fetch_row($jobseekerID_object))[0];
-			echo "<script> console.log('companyID is: " . $jobseekerID . "!')</script>";
 					
 			
 			 

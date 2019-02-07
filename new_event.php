@@ -1,7 +1,6 @@
 <?php
 session_start();
 $email = $_SESSION['email'];
-echo "<script> console.log('Hello, " . $email . "! ')</script>";
 
 $link = mysqli_connect("localhost", "root", "", "job_board_db");
  
@@ -13,7 +12,6 @@ if($link === false){
 // Grab company from database
 $companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
 $companyID = (mysqli_fetch_row($companyID_object))[0];
-echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 
 // Escape user inputs for security
 $eventTitle = mysqli_real_escape_string($link, $_REQUEST['eventTitle']);

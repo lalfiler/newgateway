@@ -23,9 +23,7 @@
 	$oldPasswordDB = (mysqli_fetch_row($oldPasswordDB_object))[0];
 	
 	if ($oldPasswordHashed == $oldPasswordDB){
-		echo "<script> console.log('passwords match!');</script>";
 		if ($newPassword == $newPasswordConfirm){
-			echo "<script> console.log('NEW passwords match! update database!');</script>";
 			$newPasswordHashed = hash("sha256", $newPassword);
 			$query = "UPDATE jobseekers SET password='" . $newPasswordHashed . "' WHERE email ='" . $email . "'";
 			

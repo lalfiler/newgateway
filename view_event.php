@@ -26,7 +26,6 @@
 			//include_once 'accesscontrol.php';
 			session_start();
 			$email = $_SESSION['email'];
-			echo "<script> console.log('Hello, " . $email . "! ')</script>";
 			
 			$link = mysqli_connect("localhost", "root", "", "job_board_db");
 	 

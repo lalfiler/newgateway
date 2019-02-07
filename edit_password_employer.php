@@ -38,7 +38,6 @@
 			// Grab company from database
 			$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
 			$companyID = (mysqli_fetch_row($companyID_object))[0];
-			echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 					
 		?>
 		<div>

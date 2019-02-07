@@ -18,7 +18,6 @@
 <?php
 	session_start();
 	$email = $_SESSION['email'];
-	echo "<script> console.log('Hello, " . $email . "! ')</script>";
 
 	$link = mysqli_connect("localhost", "root", "", "job_board_db");
 	 
@@ -37,7 +36,6 @@
 	// Grab company from database
 	$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
 	$companyID = (mysqli_fetch_row($companyID_object))[0];
-	echo "<script> console.log('companyID is: " . $companyID . "!')</script>";
 
 	// Find company's jobs in database
 	$query = mysqli_query($link, "SELECT * FROM events WHERE companyID = '".$companyID."'");
@@ -72,7 +70,6 @@
 
 <script type="text/javascript">
 	function delete_event(id){
-		console.log("delete_job is running!");
 		var confirmation = confirm("Are you sure you want to delete this event?");
 		if(confirmation){
 			window.location = 'delete_event.php?id=' + id;
