@@ -19,7 +19,6 @@
          
 		<?php
 		
-			//include_once 'accesscontrol.php';
 			session_start();
 			$email = $_SESSION['email'];
 			

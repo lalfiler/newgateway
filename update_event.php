@@ -19,7 +19,6 @@
          
 		<?php
 		
-			//include_once 'accesscontrol.php';
 			session_start();
 			$email = $_SESSION['email'];
 			
@@ -83,15 +82,16 @@
 		 
 				// write update query
 				$query = "UPDATE events 
-							SET address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', title='" .$title. "', date='" .$date. "', timeStart='" .$timeStart. "', timeEnd='" .$timeEnd. "', website='" .$website. "', description='" .$description. "'
-							WHERE id ='" .$id. "'";
-		 
+							SET address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', title='" .$title. "', date='" .$date. "', timeStart='" .$timeStart. "', timeEnd='" .$timeEnd. "', website='". $website ."' WHERE id ='" .$id . "'";
+							
+							//, description='". $description ."'
+									 
 				// prepare query for execution
 				$stmt = $link->prepare($query);
 				
 				// Execute the query
 				if($stmt->execute()){
-					echo "<div class='alert alert-success'>Job Post was updated.</div>";
+					echo "<div class='alert alert-success'>Event was updated.</div>";
 				}else{
 					echo "<div class='alert alert-danger'>Unable to update record. Please try again.</div>";
 				}
@@ -117,7 +117,7 @@
 					<div>
                         <label for="description">Event Description:</label>
                         <br>
-                        <textarea name="description" id="description" ><?php echo htmlspecialchars($description); ?></textarea>
+                        <textarea name="description" id="description"><?php echo htmlspecialchars($description, ENT_QUOTES); ?></textarea>
                     </div>
 					<div>
 						<label for="date">Event Date:</label>
