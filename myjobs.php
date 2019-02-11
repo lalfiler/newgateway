@@ -44,7 +44,7 @@
 
 	$experience_arr = ["entry-level"=>"Entry Level", "mid-level"=>"Mid Level", "senior-level"=>"Senior Level"];
 	
-	$row_counter = 0;
+	$row_type = 0;
 	
 	echo "<b>
 	</b>
@@ -56,7 +56,7 @@
 		$experienceLevel = $row['experienceLevel'];
 		$salary = $row['salary'];
 		$jobID = $row['id'];
-		if (($row_type % 6) < 3){
+		if (($row_type % 2) == 0){
 			$row_counter = 'odd';
 		} else {
 			$row_counter = 'even';
@@ -79,7 +79,7 @@
 			<td> </td>
 		</tr>
 		";
-		$row_counter++;
+		$row_type++;
 	}
 	echo "</table>";
 ?>
