@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>My Job Results</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/job-posting.css" type="text/css">
 </head>
 <body>
@@ -27,13 +28,32 @@
 	$result = $link->query($sql);
 
 	if ($result->num_rows > 0) {
-		echo "<table border='1'><th></th>";
+		echo "
+		<br>
+		<br>
+		<table class='table table-hover table-responsive table-bordered' style='background-color: rgba(238,238,238,.8)'>";
+		echo "<tr>";
+			echo "<th>Job Title</th>";
+			echo "<th>Description</th>";
+			echo "<th>Salary</th>";
+			echo "<th>Details</th>";
+		echo "</tr>";
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			$timeStamp = $row['updatedAt'];
-			$timeStamp = date( "m/d/Y", strtotime($timeStamp));
-			echo "<tr><td>".$timeStamp."</td><td><a href='view_job.php?id=".$row["id"]."' target='_blank'>".$row["jobTitle"]."</a></td><td>".$row["zip"]."</td></tr>";
-			echo "<tr><td>".$row["jobDescription"]."</td></tr>";
+			$jobTitle = $row['jobTitle'];
+		$description = $row['jobDescription'];
+		$salary = $row['salary'];
+		$jobID = $row['id'];
+		echo "
+		<tr>
+			<td><strong>$jobTitle</strong></td>
+			<td>$description</td>
+			<td>$$salary/hr</td>
+			<td>
+				<a href='view_job.php?id={$jobID}' class='btn btn-info m-r-1em'>View Job Details</a>
+			</td>
+		</tr>
+		";
 		}
 		echo "</table>";
 	} else {
