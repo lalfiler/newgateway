@@ -43,8 +43,7 @@
 	$query = mysqli_query($link, "SELECT * FROM postajob WHERE companyID = '".$companyID."'");
 	$num_rows = mysqli_num_rows($query);
 
-	echo "<b>
-	</b>
+	echo "
 	<br>
 	<br>
 	<table class='table table-hover table-responsive table-bordered' style='background-color: rgba(238,238,238,.8)'>";

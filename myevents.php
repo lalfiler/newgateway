@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>My Events</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/job-list.css" type="text/css">
 </head>
 <body>
@@ -40,31 +41,34 @@
 	// Find company's jobs in database
 	$query = mysqli_query($link, "SELECT * FROM events WHERE companyID = '".$companyID."'");
 	$num_rows = mysqli_num_rows($query);
-	//$link->close();
 	
-	echo "<b>
-	</b>
+	echo "
 	<br>
-	<br>";
+	<br>
+	<table class='table table-hover table-responsive table-bordered' style='background-color: rgba(238,238,238,.8)'>";
+	echo "<tr>";
+		echo "<th>Event Title</th>";
+		echo "<th>Date</th>";
+		echo "<th>Time</th>";
+		echo "<th>Action</th>";
+	echo "</tr>";
 	while ($row = mysqli_fetch_assoc($query) ){
 		$title = $row['title'];
 		$date = $row['date'];
 		$time = $row['timeStart'];
 		$eventID = $row['id'];
-		echo "<b>
-		$title
-		<br>
-		$date 
-		<br>
-		$time
-		<br>
-		<a href='event.php?id={$eventID}' class='button'>View Event</a>
-		<br>
-		<a href='update_event.php?id={$eventID}' class='button'>Edit Event</a>
-		<br>
-		<a href='#' onclick='delete_event({$eventID});' class='button'>Delete Event</a></b>
-		<hr>
-		<br>";
+		echo "
+		<tr>
+			<td><strong>$title</strong></td>
+			<td>$date</td>
+			<td>$time</td>
+			<td>
+				<a href='event.php?id={$eventID}' class='btn btn-info m-r-1em'>View Event</a>
+				<a href='update_event.php?id={$eventID}' class='btn btn-primary m-r-1em'>Edit Event</a>
+				<a href='#' onclick='delete_event({$eventID});' class='btn btn-danger'>Delete Event</a>
+			</td>
+		</tr>
+		";
 	}
 ?>
 
@@ -76,9 +80,10 @@
 		}
 	}
 </script>
-
+<!--
     <footer>
         <p>&copy; 2018 New GateWay Solutions Corporation</p>
     </footer>
+-->
 </body>
 </html>
