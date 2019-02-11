@@ -72,6 +72,10 @@ input, textarea, select {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 .button:hover {
     background-color: #fff;

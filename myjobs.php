@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>My Jobs</title>
-    <link rel="stylesheet" href="css/job-list.css" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/job-list.css" type="text/css">
+
 </head>
 <body>
     <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
@@ -40,47 +42,37 @@
 	// Find company's jobs in database
 	$query = mysqli_query($link, "SELECT * FROM postajob WHERE companyID = '".$companyID."'");
 	$num_rows = mysqli_num_rows($query);
-	//$link->close();
 
-	$experience_arr = ["entry-level"=>"Entry Level", "mid-level"=>"Mid Level", "senior-level"=>"Senior Level"];
-	
-	$row_type = 0;
-	
 	echo "<b>
 	</b>
 	<br>
 	<br>
-	<table style='width:100%'>";
+	<table class='table table-hover table-responsive table-bordered' style='background-color: rgba(238,238,238,.8)'>";
+	echo "<tr>";
+		echo "<th>Job Title</th>";
+		echo "<th>Description</th>";
+		echo "<th>Salary</th>";
+		echo "<th>Action</th>";
+	echo "</tr>";
+	
 	while ($row = mysqli_fetch_assoc($query) ){
 		$jobTitle = $row['jobTitle'];
-		$experienceLevel = $row['experienceLevel'];
+		$description = $row['jobDescription'];
 		$salary = $row['salary'];
 		$jobID = $row['id'];
-		if (($row_type % 2) == 0){
-			$row_counter = 'odd';
-		} else {
-			$row_counter = 'even';
-		};
 		echo "
-		<tr class=$row_counter>
+		<tr>
 			<td><strong>$jobTitle</strong></td>
-			<td><a href='job.php?id={$jobID}' class='button'>View Job</a></td>
-		</tr>
-		<tr class=$row_counter>
-			<td>$experience_arr[$experienceLevel]</td>
-			<td><a href='update_job_post.php?id={$jobID}' class='button'>Edit Job</a></td>
-		</tr>
-		<tr class=$row_counter>
+			<td>$description</td>
 			<td>$$salary/hr</td>
-			<td><a href='#' onclick='delete_job({$jobID});' class='button'>Delete Job</a></td>
-		</tr>
-		<tr class=$row_counter>
-			<td> </td>
-			<td> </td>
+			<td>
+				<a href='job.php?id={$jobID}' class='btn btn-info m-r-1em'>View Job</a>
+				<a href='update_job_post.php?id={$jobID}' class='btn btn-primary m-r-1em'>Edit Job</a>
+				<a href='#' onclick='delete_job({$jobID});' class='btn btn-danger'>Delete Job</a>
+			</td>
 		</tr>
 		";
-		$row_type++;
-	}
+		}
 	echo "</table>";
 ?>
 
