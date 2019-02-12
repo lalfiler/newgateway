@@ -33,6 +33,7 @@
 	<table class='table table-hover table-responsive table-bordered' style='background-color: rgba(238,238,238,.8)'>";
 	echo "<tr>";
 		echo "<th>Event Title</th>";
+		echo "<th>Host Company</th>";
 		echo "<th>Date</th>";
 		echo "<th>Time</th>";
 		echo "<th>Action</th>";
@@ -42,9 +43,15 @@
 		$date = $row['date'];
 		$time = $row['timeStart'];
 		$eventID = $row['id'];
+		//grab company name from database
+		$companyID = $row['companyID'];
+		$queryEmployers = mysqli_query($link, "SELECT * FROM employers WHERE id ='" .$companyID . "'");
+		$assoc = mysqli_fetch_assoc($queryEmployers);
+		$company = $assoc['companyName'];
 		echo "
 		<tr>
 			<td><strong>$title</strong></td>
+			<td>$company</td>
 			<td>$date</td>
 			<td>$time</td>
 			<td>
