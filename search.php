@@ -24,7 +24,7 @@
 	}
 	$jobTitle = $_POST['jobTitle'];
 	$address = $_POST['address'];
-	$sql = ("SELECT * FROM postajob WHERE (jobTitle LIKE '%$jobTitle%') AND ((city LIKE '%$address%') OR (zip LIKE '%$address%'))");
+	$sql = ("SELECT * FROM postajob WHERE (jobTitle LIKE '%$jobTitle%') AND ((city LIKE '%$address%') OR (zip LIKE '%$address%')) ORDER BY updatedAt");
 	$result = $link->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -37,6 +37,7 @@
 			echo "<th>Company</th>";
 			echo "<th>Description</th>";
 			echo "<th>Salary</th>";
+			echo "<th>Last Edited</th>";
 			echo "<th>Details</th>";
 		echo "</tr>";
 		// output data of each row
@@ -45,6 +46,7 @@
 			$description = $row['jobDescription'];
 			$salary = $row['salary'];
 			$jobID = $row['id'];
+			$updatedAt = $row['updatedAt'];
 			$companyID = $row['companyID'];
 			$query = mysqli_query($link, "SELECT * FROM employers WHERE id ='" .$companyID . "'");
 			$assoc = mysqli_fetch_assoc($query);
@@ -55,6 +57,7 @@
 				<td>$company</td>
 				<td>$description</td>
 				<td>$$salary/hr</td>
+				<td>$updatedAt</td>
 				<td>
 					<a href='view_job.php?id={$jobID}' class='btn btn-info m-r-1em'>View Job Details</a>
 				</td>

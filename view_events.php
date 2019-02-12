@@ -24,7 +24,7 @@
 	if($link === false){
 		die("ERROR: Could not connect. " . mysqli_connect_error());
 	}
-	$query = mysqli_query($link, "SELECT * FROM events");
+	$query = mysqli_query($link, "SELECT * FROM events ORDER BY date");
 	$num_rows = mysqli_num_rows($query);
 	
 	echo "
@@ -43,22 +43,31 @@
 		$date = $row['date'];
 		$time = $row['timeStart'];
 		$eventID = $row['id'];
+		
 		//grab company name from database
 		$companyID = $row['companyID'];
 		$queryEmployers = mysqli_query($link, "SELECT * FROM employers WHERE id ='" .$companyID . "'");
 		$assoc = mysqli_fetch_assoc($queryEmployers);
 		$company = $assoc['companyName'];
-		echo "
-		<tr>
-			<td><strong>$title</strong></td>
-			<td>$company</td>
-			<td>$date</td>
-			<td>$time</td>
-			<td>
-				<a href='view_event.php?id={$eventID}' class='btn btn-info m-r-1em'>View Event Details</a>
-			</td>
-		</tr>
-		";
+		
+		//determine if event is in the future
+		$event_date = new DateTime($date);
+		$current_date = new DateTime();
+		$current_date->add(DateInterval::createFromDateString('yesterday'));
+		
+		if($event_date >= $current_date){
+			echo "
+			<tr>
+				<td><strong>$title</strong></td>
+				<td>$company</td>
+				<td>$date</td>
+				<td>$time</td>
+				<td>
+					<a href='view_event.php?id={$eventID}' class='btn btn-info m-r-1em'>View Event Details</a>
+				</td>
+			</tr>
+			";
+		}
 	}
 ?>
 <!--
