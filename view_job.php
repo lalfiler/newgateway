@@ -33,18 +33,18 @@
 				die("ERROR: Could not connect. " . mysqli_connect_error());
 			}
 
-			// Grab company from database
+			// Grab job seeker from database
 			$jobSeekerID_object = mysqli_query($link, "SELECT id from jobseekers WHERE email = '".$email."'");
 			$jobSeekerID = (mysqli_fetch_row($jobSeekerID_object))[0];
-					
-			// get passed parameter value, in this case, the record ID
-			// isset() is a PHP function used to verify if a value is there or not
-			$id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
 			
 			if (!$jobSeekerID){
 				echo "ERROR: Please log in to view this job posting";
 				exit;
 			};
+					
+			// get passed parameter value, in this case, the record ID
+			// isset() is a PHP function used to verify if a value is there or not
+			$id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
 			 
 			// read current record's data
 			// prepare select query

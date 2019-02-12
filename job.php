@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>View My Job</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/job-posting.css" type="text/css">
 </head>
 <body>
@@ -33,7 +34,7 @@
 			$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
 			$companyID = (mysqli_fetch_row($companyID_object))[0];
 					
-			// get passed parameter value, in this case, the record ID
+			// get passed parameter value, in this case, the job's ID
 			// isset() is a PHP function used to verify if a value is there or not
 			$id=isset($_GET['id']) ? $_GET['id'] : die('ERROR: Record ID not found.');
 			
@@ -94,6 +95,11 @@
 			"jobFunctionSupp"=>"Support"];
 			 
 		?>
+		
+		<div style="margin-right: auto">
+			<a href='update_job_post.php?id=<?php echo $id ?>' class='btn btn-primary m-r-1em'>Edit This Job</a>
+			<a href='#' onclick='delete_job(<?php echo $id ?>);' class='btn btn-danger'>Delete This Job</a>
+		</div>
  
         <table style="margin-left:auto; margin-right:auto; background-color: rgba(238, 238, 238, .8)">
 			<tr>
@@ -145,6 +151,15 @@
 		</table>
  
     </div> <!-- end .container -->
+	
+<script type="text/javascript">
+	function delete_job(id){
+		var confirmation = confirm("Are you sure you want to delete this job posting?");
+		if(confirmation){
+			window.location = 'delete_job_post.php?id=' + id;
+		}
+	}
+</script>
      
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
