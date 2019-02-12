@@ -93,12 +93,21 @@
 			"jobFunctionSale"=>"Sales",
 			"jobFunctionSupp"=>"Support"];
 			 
+			//grab company name from database
+			$companyID = $row['companyID'];
+			$query = mysqli_query($link, "SELECT * FROM employers WHERE id ='" .$companyID . "'");
+			$assoc = mysqli_fetch_assoc($query);
+			$company = $assoc['companyName'];
 		?>
  
 		<table style="margin-left:auto; margin-right:auto; background-color: rgba(238, 238, 238, .8)">
 			<tr>
 				<td style="width:15%">Job Title</td>
 				<td><strong><?php echo htmlspecialchars($jobTitle, ENT_QUOTES);  ?></strong></td>
+			</tr>
+			<br><tr>
+				<td style="width:15%">Company</td>
+				<td><strong><?php echo htmlspecialchars($company, ENT_QUOTES);  ?></strong></td>
 			</tr>
 			<br>
 			<tr>

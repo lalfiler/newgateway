@@ -34,6 +34,7 @@
 		<table class='table table-hover table-responsive table-bordered' style='background-color: rgba(238,238,238,.8)'>";
 		echo "<tr>";
 			echo "<th>Job Title</th>";
+			echo "<th>Company</th>";
 			echo "<th>Description</th>";
 			echo "<th>Salary</th>";
 			echo "<th>Details</th>";
@@ -41,19 +42,24 @@
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
 			$jobTitle = $row['jobTitle'];
-		$description = $row['jobDescription'];
-		$salary = $row['salary'];
-		$jobID = $row['id'];
-		echo "
-		<tr>
-			<td><strong>$jobTitle</strong></td>
-			<td>$description</td>
-			<td>$$salary/hr</td>
-			<td>
-				<a href='view_job.php?id={$jobID}' class='btn btn-info m-r-1em'>View Job Details</a>
-			</td>
-		</tr>
-		";
+			$description = $row['jobDescription'];
+			$salary = $row['salary'];
+			$jobID = $row['id'];
+			$companyID = $row['companyID'];
+			$query = mysqli_query($link, "SELECT * FROM employers WHERE id ='" .$companyID . "'");
+			$assoc = mysqli_fetch_assoc($query);
+			$company = $assoc['companyName'];
+			echo "
+			<tr>
+				<td><strong>$jobTitle</strong></td>
+				<td>$company</td>
+				<td>$description</td>
+				<td>$$salary/hr</td>
+				<td>
+					<a href='view_job.php?id={$jobID}' class='btn btn-info m-r-1em'>View Job Details</a>
+				</td>
+			</tr>
+			";
 		}
 		echo "</table>";
 	} else {
