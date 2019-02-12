@@ -5,20 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>View My Event</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/job-posting.css" type="text/css">
 </head>
 <body>
- 
- 
-    <!-- container -->
-    <div class="container">
-  
-        <div class="page-header">
-            <h1>Event Details</h1>
-			<form action="employers-dashboard.php">
-				<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
-			</form>
-        </div>
          
 		<?php
 		
@@ -68,6 +58,22 @@
 			$contactEmail = $row['email'];
 			 
 		?>
+		
+	 
+    <!-- container -->
+    <div class="container">
+  
+        <div class="page-header">
+            <h1>Event Details</h1>
+			<form action="employers-dashboard.php">
+				<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+			</form>
+        </div>
+		
+		<div style="margin-right: auto">
+			<a href='update_event.php?id=<?php echo $id ?>' class='btn btn-primary m-r-1em'>Edit This Event</a>
+			<a href='#' onclick='delete_event(<?php echo $id ?>);' class='btn btn-danger'>Delete This Event</a>
+		</div>
  
         <table style="margin-left:auto; margin-right:auto; background-color: rgba(238, 238, 238, .8)">
 			<tr>
@@ -114,6 +120,15 @@
 		</table>
  
     </div> <!-- end .container -->
+	
+<script type="text/javascript">
+	function delete_event(id){
+		var confirmation = confirm("Are you sure you want to delete this event?");
+		if(confirmation){
+			window.location = 'delete_event.php?id=' + id;
+		}
+	}
+</script>
      
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

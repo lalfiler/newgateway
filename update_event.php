@@ -78,13 +78,13 @@
 				$timeStart=htmlspecialchars(strip_tags($_POST['timeStart']));
 				$timeEnd=htmlspecialchars(strip_tags($_POST['timeEnd']));
 				$website=htmlspecialchars(strip_tags($_POST['website']));
-				$description=htmlspecialchars(strip_tags($_POST['description']));
+				$description=$_POST['description'];
 		 
 				// write update query
 				$query = "UPDATE events 
-							SET address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', title='" .$title. "', date='" .$date. "', timeStart='" .$timeStart. "', timeEnd='" .$timeEnd. "', website='". $website ."' WHERE id ='" .$id . "'";
+							SET address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', title='" .$title. "', date='" .$date. "', timeStart='" .$timeStart. "', timeEnd='" .$timeEnd. "', website='". $website ."', description='". $description ."' WHERE id ='" .$id . "'";
 							
-							//, description='". $description ."'
+							//
 									 
 				// prepare query for execution
 				$stmt = $link->prepare($query);
