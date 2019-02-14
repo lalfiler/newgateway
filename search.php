@@ -18,13 +18,23 @@
 <?php
    $link = mysqli_connect("localhost", "root", "", "job_board_db");
 
+   // PAGINATION VARIABLES
+	// page is the current page, if there's nothing set, default is page 1
+	$page = isset($_GET['page']) ? $_GET['page'] : 1;
+	 
+	// set records or rows of data per page
+	$records_per_page = 5;
+	 
+	// calculate for the query LIMIT clause
+	$from_record_num = ($records_per_page * $page) - $records_per_page;
+   
 	// Check connection
 	if($link === false){
 		die("ERROR: Could not connect. " . mysqli_connect_error());
 	}
 	$jobTitle = $_POST['jobTitle'];
 	$address = $_POST['address'];
-	$sql = ("SELECT * FROM postajob WHERE (jobTitle LIKE '%$jobTitle%') AND ((city LIKE '%$address%') OR (zip LIKE '%$address%')) ORDER BY updatedAt");
+	$sql = ("SELECT * FROM postajob WHERE (jobTitle LIKE '%$jobTitle%') AND ((city LIKE '%$address%') OR (zip LIKE '%$address%')) ORDER BY updatedAt LIMIT $from_record_num, $records_per_page");
 	$result = $link->query($sql);
 
 	if ($result->num_rows > 0) {
