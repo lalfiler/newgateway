@@ -13,7 +13,7 @@
     <h1>My Events</h1>
 	
 	<form action="employers-dashboard.php">
-		<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+		<input type="submit" class="button" value="Back to Dashboard" style="width:100%; font-size: 130%">
 	</form>
 
 <?php

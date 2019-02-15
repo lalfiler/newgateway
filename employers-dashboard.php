@@ -7,6 +7,11 @@ if(isset($_GET['status'])){
 } else{
 	$status = null;
 };
+if(isset($_GET['login'])){
+	$login = true;
+} else{
+	$login = false;
+};
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +53,11 @@ if(isset($_GET['status'])){
 		<?php 
 			if($status == "password"){
 				echo "<p style='color: #fff; background-color: rgba(0, 255, 0, 0.6); text-align:center'>Password Successfully Updated!</p>";
+				};
+		?>
+		<?php 
+			if($login){
+				echo "<p style='color: #fff; background-color: rgba(0, 255, 0, 0.6); text-align:center'>Welcome, $email</p>";
 				};
 		?>
         <div class="options">
