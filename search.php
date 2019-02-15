@@ -11,7 +11,7 @@
 <body>
     <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
 	<form action="job-seekers-dashboard.php">
-		<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+		<input type="submit" class="button" value="Back to Dashboard" style="width:100%; font-size:130%">
 	</form>
     <h1>My Job Search Results</h1>
 	
@@ -19,22 +19,24 @@
    $link = mysqli_connect("localhost", "root", "", "job_board_db");
 
    // PAGINATION VARIABLES
-	// page is the current page, if there's nothing set, default is page 1
-	$page = isset($_GET['page']) ? $_GET['page'] : 1;
-	 
+	if( isset($_GET{'page'} ) ) {
+		$page = $_GET{'page'} + 1;
+		$offset = $rec_limit * $page ;
+	}else {
+		$page = 0;
+		$offset = 0;
+	}; 
 	// set records or rows of data per page
 	$records_per_page = 5;
 	 
-	// calculate for the query LIMIT clause
-	$from_record_num = ($records_per_page * $page) - $records_per_page;
-   
 	// Check connection
 	if($link === false){
 		die("ERROR: Could not connect. " . mysqli_connect_error());
-	}
+	};
+	
 	$jobTitle = $_POST['jobTitle'];
 	$address = $_POST['address'];
-	$sql = ("SELECT * FROM postajob WHERE (jobTitle LIKE '%$jobTitle%') AND ((city LIKE '%$address%') OR (zip LIKE '%$address%')) ORDER BY updatedAt LIMIT $from_record_num, $records_per_page");
+	$sql = ("SELECT * FROM postajob WHERE (jobTitle LIKE '%$jobTitle%') AND ((city LIKE '%$address%') OR (zip LIKE '%$address%')) ORDER BY updatedAt LIMIT $offset, $records_per_page");
 	$result = $link->query($sql);
 
 	if ($result->num_rows > 0) {
