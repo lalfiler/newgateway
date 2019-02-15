@@ -17,8 +17,13 @@
 	
 <?php
    $link = mysqli_connect("localhost", "root", "", "job_board_db");
-
-   // PAGINATION VARIABLES
+	 
+	// Check connection
+	if($link === false){
+		die("ERROR: Could not connect. " . mysqli_connect_error());
+	};
+	
+	 // PAGINATION VARIABLES
 	if( isset($_GET{'page'} ) ) {
 		$page = $_GET{'page'} + 1;
 		$offset = $rec_limit * $page ;
@@ -28,11 +33,16 @@
 	}; 
 	// set records or rows of data per page
 	$records_per_page = 5;
+	
+	// Get total number of records
+	 $sql = "SELECT count(id) FROM postajob ";
+	 $retval = mysql_query( $sql, $link );
 	 
-	// Check connection
-	if($link === false){
-		die("ERROR: Could not connect. " . mysqli_connect_error());
-	};
+	 if(! $retval ) {
+		die('Could not get data: ' . mysql_error());
+	 }
+	 $row = mysql_fetch_array($retval, MYSQL_NUM );
+	 $rec_count = $row[0];
 	
 	$jobTitle = $_POST['jobTitle'];
 	$address = $_POST['address'];
