@@ -6,7 +6,13 @@ if(isset($_GET['status'])){
 	$status = $_GET['status']; 
 } else{
 	$status = null;
-};?>
+};
+if(isset($_GET['login'])){
+	$login = true;
+} else{
+	$login = false;
+};
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,10 +49,15 @@ if(isset($_GET['status'])){
 		</form>
 	</div>
     <div class="container">
-        <h1>Welcome to the Job Seeker's Dashboard</h1>
 		<?php 
 			if($status == "password"){
 				echo "<p style='color: #fff; background-color: rgba(0, 255, 0, 0.6); text-align:center'>Password Successfully Updated!</p>";
+			};
+			
+			if($login){
+				echo "<h1>Welcome to the Job Seeker's Dashboard, $email</h1>";
+			} else {
+				echo "<h1>Job Seeker's Dashboard</h1>";
 			};
 		?>
         <div id="form">
