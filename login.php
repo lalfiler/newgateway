@@ -33,7 +33,7 @@ if(mysqli_num_rows($row_employers) == 1){
 	exit();
 
 }else{
-	header('location: login-fail.html');
+	header("location: login-fail.html?status='fail'");
 	exit();
 }
 
