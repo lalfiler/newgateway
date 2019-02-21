@@ -89,17 +89,29 @@
 			}
 		}
 		echo "</table>";
-		if( $next_page == 2 ) {
-            echo "<a href = \"view_events.php?page=2\" class='btn btn-primary m-r-1em'>Next 5 Events</a>";
-		}else if( $next_page > 0 ) {
-            $last = $next_page - 2;
-            echo "<a href = \"view_events.php?page=$last\" class='btn btn-primary m-r-1em'>Last 5 Events</a> |";
-            echo "<a href = \"view_events.php?page=$next_page\" class='btn btn-primary m-r-1em'>Next 5 Events</a>";
-         }else if( $left_rec < $rec_limit ) {
-            $last = $next_page - 2;
-            echo "<a href = \"view_events.php?page=$last\" class='btn btn-primary m-r-1em'>Last 5 Events</a>";
-         };
-		 
+		
+		/* 
+		1) this is the only page
+		if(!(($next_page == 2) && ($record_count <= $records_per_page)))
+		2) this is the first page and there are pages after this one
+
+		3) UHH this is the last page and there are pages before this one
+		
+		4) there are pages both before and after this one
+		*/
+		
+		if(!(($next_page == 2) && ($record_count <= $records_per_page))){
+			if( $next_page == 2 ) {
+				echo "<a href = \"view_events.php?page=2\" class='btn btn-primary m-r-1em'>Next 5 Events</a>";
+			}else if( $records_left < $records_per_page ) {
+				$last = $next_page - 2;
+				echo "<a href = \"view_events.php?page=$last\" class='btn btn-primary m-r-1em'>Last 5 Events</a>";
+			 }else {
+				$last = $next_page - 2;
+				echo "<a href = \"view_events.php?page=$last\" class='btn btn-primary m-r-1em'>Last 5 Events</a> |";
+				echo "<a href = \"view_events.php?page=$next_page\" class='btn btn-primary m-r-1em'>Next 5 Events</a>";
+			 };
+		};
 	}
 ?>
     <footer>
