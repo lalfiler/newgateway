@@ -6,6 +6,7 @@
 }
 #header {
 	background-color: #000033;
+	text-align:center;
 }
 #logo {
 	color:  #ff9900;
@@ -53,3 +54,4 @@ a:focus {
 .btnForm {
 	text-align: center;
 }
+

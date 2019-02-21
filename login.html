@@ -16,27 +16,31 @@
 <!-- header -->
 <div id="header" class="parallax">
   <div class="container-fluid">
-    <div class="left">
-      <a href="index.html"><img src="images/logo.JPG" alt="logo" class="logo"></a>
-    </div>
-	<div class="left" id="donate">
-		<form action="https://www.paypal.com/cgi-bin" method="post" target="_top">
-			<p>
-				<input name="cmd" type="hidden" value="_s-xclick">
-				<input name="hosted_button_id" type="hidden" value="BJQBXZUMH3UQ4">
-			</p>
-			<p style="text-align: center;">&nbsp;</p>
-			<p>
-				<input alt="PayPal - The safer, easier way to pay online!" border="0" name="submit"
-				src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
-			</p>
-			<p style="text-align: center;">
-				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
-				style="display:block; height:1px; margin-left:auto; margin-right:auto; width:1px">
-			</p>
-		</form>
+	<div class="row">
+		<div class="col-sm">
+			<a href="index.html"><img src="images/logo.JPG" alt="logo" class="logo"></a>
+			<div id="donate">
+				<form action="https://www.paypal.com/cgi-bin" method="post" target="_top">
+					<p>
+						<input name="cmd" type="hidden" value="_s-xclick">
+						<input name="hosted_button_id" type="hidden" value="BJQBXZUMH3UQ4">
+					</p>
+					<p style="text-align: center;">&nbsp;</p>
+					<p>
+						<input alt="PayPal - The safer, easier way to pay online!" border="0" name="submit"
+						src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" type="image">
+					</p>
+					<p style="text-align: center;">
+						<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
+						style="display:block; height:1px; margin-left:auto; margin-right:auto; width:1px">
+					</p>
+				</form>
+			</div>
+		</div>
 	</div>
-    <div class="right">
+</div>
+  <div class="container-fluid">
+    <div class="row">
       <div id="userLogin">
            <form class ="form-inline" action="login.php" method="post">
                <div class="input-group">
@@ -56,9 +60,9 @@
         </div>
     </div>
   </div>
-      <footer>
-        <p>&copy; 2018 New GateWay Solutions Corporation</p>
-    </footer>
+<footer>
+	<p>&copy; 2018 New GateWay Solutions Corporation</p>
+</footer>
 </div>
 <!-- end header -->
 </body>
