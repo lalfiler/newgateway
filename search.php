@@ -39,7 +39,7 @@
 	$retval = mysqli_query($link, $sql );
 	
 	if(! $retval ) {
-		die('Could not get data: ' . mysqli_error());
+		die('Could not get data: ' . mysqli_error($retval));
 	}
 	$row = mysqli_fetch_array($retval, MYSQLI_NUM );
 	$record_count = $row[0];
@@ -114,7 +114,7 @@
 ?>
 
     <footer>
-        <p>&copy; 2018 New GateWay Solutions Corporation</p>
+        <p>&copy; 2019 New GateWay Solutions Corporation</p>
     </footer>
 </body>
 </html>
