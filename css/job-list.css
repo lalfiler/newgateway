@@ -5,6 +5,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0 auto;
+	min-height: 100%;
 }
 #form {
     display: block;
@@ -100,4 +101,7 @@ a.button {
     text-decoration: none;
     color: initial;
 }
+}
+html {
+	height: 100%;
 }

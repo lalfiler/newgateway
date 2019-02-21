@@ -11,30 +11,50 @@
 <body>
     <a href="https://newgateway.org/"><img src="images/logo.JPG" alt="logo" class="logo"></a>
 	<form action="job-seekers-dashboard.php">
-		<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+		<input type="submit" class="button" value="Back to Dashboard" style="width:100%; font-size:130%">
 	</form>
     <h1>My Job Search Results</h1>
 	
 <?php
    $link = mysqli_connect("localhost", "root", "", "job_board_db");
-
-   // PAGINATION VARIABLES
-	// page is the current page, if there's nothing set, default is page 1
-	$page = isset($_GET['page']) ? $_GET['page'] : 1;
 	 
-	// set records or rows of data per page
-	$records_per_page = 5;
-	 
-	// calculate for the query LIMIT clause
-	$from_record_num = ($records_per_page * $page) - $records_per_page;
-   
 	// Check connection
 	if($link === false){
 		die("ERROR: Could not connect. " . mysqli_connect_error());
+	};
+	
+	 // PAGINATION VARIABLES
+	$records_per_page = 5;
+	
+	if( isset($_GET{'page'} ) ) {
+		$next_page = $_GET{'page'} + 1;
+		$offset = $records_per_page * $next_page ;
+	}else {
+		$next_page = 0;
+		$offset = 0;
+	}; 
+	
+	// Get total number of records
+	$sql = "SELECT count(id) FROM postajob";
+	$retval = mysqli_query($link, $sql );
+	
+	if(! $retval ) {
+		die('Could not get data: ' . mysqli_error());
 	}
-	$jobTitle = $_POST['jobTitle'];
-	$address = $_POST['address'];
-	$sql = ("SELECT * FROM postajob WHERE (jobTitle LIKE '%$jobTitle%') AND ((city LIKE '%$address%') OR (zip LIKE '%$address%')) ORDER BY updatedAt LIMIT $from_record_num, $records_per_page");
+	$row = mysqli_fetch_array($retval, MYSQLI_NUM );
+	$record_count = $row[0];
+	
+	//set search parameters
+	if( isset($_GET{'jobTitle'})){
+		$searchJobTitle = $_GET{'jobTitle'};
+		$searchAddress = $_GET{'address'};
+	} else {
+		$searchJobTitle = $_POST['jobTitle'];
+		$searchAddress = $_POST['address'];
+	};
+	
+	
+	$sql = ("SELECT * FROM postajob WHERE (jobTitle LIKE '%$searchJobTitle%') AND ((city LIKE '%$searchAddress%') OR (zip LIKE '%$searchAddress%')) ORDER BY updatedAt LIMIT $offset, $records_per_page");
 	$result = $link->query($sql);
 
 	if ($result->num_rows > 0) {
@@ -75,6 +95,18 @@
 			";
 		}
 		echo "</table>";
+		
+		if( $next_page > 0 ) {
+            $last = $next_page - 2;
+            echo "<a href = \"search.php?page=$last&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Last 5 Jobs</a> |";
+            echo "<a href = \"search.php?page=$next_page&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Next 5 Jobs</a>";
+         }else if( $next_page == 0 ) {
+            echo "<a href = \"search.php?page=$next_page&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Next 5 Jobs</a>";
+         }else if( $left_rec < $rec_limit ) {
+            $last = $next_page - 2;
+            echo "<a href = \"search.php?page=$last&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Last 5 Jobs</a>";
+         };
+		 
 	} else {
 		echo "No results match your query. Try broadening your search.";
 	}

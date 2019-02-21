@@ -14,7 +14,7 @@
     <h1>My Jobs</h1>
 	
 	<form action="employers-dashboard.php">
-		<input type="submit" class="button" value="Back to Dashboard" style="width:100%">
+		<input type="submit" class="button" value="Back to Dashboard" style="width:100%; font-size: 130%">
 	</form>
 
 <?php
@@ -75,17 +75,17 @@
 	echo "</table>";
 ?>
 
-<script type="text/javascript">
-	function delete_job(id){
-		var confirmation = confirm("Are you sure you want to delete this job posting?");
-		if(confirmation){
-			window.location = 'delete_job_post.php?id=' + id;
+	<script type="text/javascript">
+		function delete_job(id){
+			var confirmation = confirm("Are you sure you want to delete this job posting?");
+			if(confirmation){
+				window.location = 'delete_job_post.php?id=' + id;
+			}
 		}
-	}
-</script>
+	</script>
 
-    <footer>
-        <p>&copy; 2018 New GateWay Solutions Corporation</p>
-    </footer>
+	<footer class="fixed-bottom">
+		<p>&copy; 2018 New GateWay Solutions Corporation</p>
+	</footer>
 </body>
 </html>
