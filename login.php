@@ -22,18 +22,18 @@ if(mysqli_num_rows($row_employers) == 1){
 	session_start();
 	$_SESSION['email'] = $email;
 	$_SESSION['password_hashed'] = $password;
-	header('Location: employers-dashboard.php');
+	header('Location: employers-dashboard.php?login=true');
 	exit();
 
 }elseif(mysqli_num_rows($row_jobseekers) == 1){
 	session_start();
 	$_SESSION['email'] = $email;
 	$_SESSION['password_hashed'] = $password;
-	header('Location: job-seekers-dashboard.php');
+	header('Location: job-seekers-dashboard.php?login=true');
 	exit();
 
 }else{
-	header('location: login-fail.html');
+	header("location: login-fail.html?status='fail'");
 	exit();
 }
 
