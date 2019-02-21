@@ -63,7 +63,6 @@ footer a:hover {
 .signUp a:hover, .logIn a:hover {
     color: #fff;
     background-color: #ccc;
-    border: solid 1px #ccc;
 }
 
 .err{
