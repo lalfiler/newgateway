@@ -27,22 +27,14 @@
 	$records_per_page = 5;
 	
 	if( isset($_GET{'page'} ) ) {
-		$next_page = $_GET{'page'} + 1;
-		$offset = $records_per_page * $next_page ;
+		$page = $_GET{'page'};
+		$next_page = $page + 1;
+		$offset = $records_per_page * ($page - 1);
 	}else {
-		$next_page = 0;
+		$next_page = 2;
 		$offset = 0;
+		$page= 1;
 	}; 
-	
-	// Get total number of records
-	$sql = "SELECT count(id) FROM postajob";
-	$retval = mysqli_query($link, $sql );
-	
-	if(! $retval ) {
-		die('Could not get data: ' . mysqli_error($retval));
-	}
-	$row = mysqli_fetch_array($retval, MYSQLI_NUM );
-	$record_count = $row[0];
 	
 	//set search parameters
 	if( isset($_GET{'jobTitle'})){
@@ -57,7 +49,15 @@
 	$sql = ("SELECT * FROM postajob WHERE (jobTitle LIKE '%$searchJobTitle%') AND ((city LIKE '%$searchAddress%') OR (zip LIKE '%$searchAddress%')) ORDER BY updatedAt LIMIT $offset, $records_per_page");
 	$result = $link->query($sql);
 
-	if ($result->num_rows > 0) {
+	
+	$count_sql = ("SELECT count(id) FROM postajob WHERE (jobTitle LIKE '%$searchJobTitle%') AND ((city LIKE '%$searchAddress%') OR (zip LIKE '%$searchAddress%'))");
+	$count_query = mysqli_query($link, $count_sql);
+	$row = mysqli_fetch_array($count_query, MYSQLI_NUM);
+	
+	$record_count = $row[0];
+	$records_left = $record_count - ($records_per_page * ($page - 1));
+	
+	if ($record_count > 0) {
 		echo "
 		<br>
 		<br>
@@ -96,16 +96,18 @@
 		}
 		echo "</table>";
 		
-		if( $next_page > 0 ) {
-            $last = $next_page - 2;
-            echo "<a href = \"search.php?page=$last&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Last 5 Jobs</a> |";
-            echo "<a href = \"search.php?page=$next_page&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Next 5 Jobs</a>";
-         }else if( $next_page == 0 ) {
-            echo "<a href = \"search.php?page=$next_page&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Next 5 Jobs</a>";
-         }else if( $left_rec < $rec_limit ) {
-            $last = $next_page - 2;
-            echo "<a href = \"search.php?page=$last&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Last 5 Jobs</a>";
-         };
+		if(!(($next_page == 2) && ($record_count <= $records_per_page))){ //this is not the only page
+			if( $next_page == 2 ) { //this is the first page
+				echo "<a href = \"search.php?page=$next_page&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Next</a>";
+			}else if( $records_left <= $records_per_page) { //this is the last page
+				$last = $next_page - 2;
+				echo "<a href = \"search.php?page=$last&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Previous</a>";
+			 }else { //there are pages both before and after this one
+				$last = $next_page - 2;
+				echo "<a href = \"search.php?page=$last&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Previous</a> |";
+				echo "<a href = \"search.php?page=$next_page&jobTitle=$searchJobTitle&address=$searchAddress\" class='btn btn-primary m-r-1em'>Next</a>";
+			 };
+		};
 		 
 	} else {
 		echo "No results match your query. Try broadening your search.";
