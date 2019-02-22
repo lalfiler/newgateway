@@ -29,6 +29,7 @@
 
 	$action = isset($_GET['action']) ? $_GET['action'] : "";
 	
+	//set pagination variables
 	$records_per_page = 5;
 	
 	if( isset($_GET{'page'} ) ) {
@@ -56,7 +57,7 @@
 		echo "<div class='alert alert-success'>Event was successfully deleted.</div>";
 	};
 	
-	// Find company's jobs in database
+	// Find company's events in database
 	$query = mysqli_query($link, "SELECT * FROM events WHERE companyID = '".$companyID."' LIMIT $offset, $records_per_page");
 	$num_rows = mysqli_num_rows($query);
 	
@@ -93,14 +94,14 @@
 		
 		if(!(($next_page == 2) && ($record_count <= $records_per_page))){ //this is not the only page
 			if( $next_page == 2 ) { //this is the first page
-				echo "<a href = \"myevents.php?page=2\" class='btn btn-primary m-r-1em'>Next 5 Events</a>";
+				echo "<a href = \"myevents.php?page=2\" class='btn btn-primary m-r-1em'>Next</a>";
 			}else if( $records_left <= $records_per_page) { //this is the last page
 				$last = $next_page - 2;
-				echo "<a href = \"myevents.php?page=$last\" class='btn btn-primary m-r-1em'>Last 5 Events</a>";
+				echo "<a href = \"myevents.php?page=$last\" class='btn btn-primary m-r-1em'>Previous</a>";
 			 }else { //there are pages both before and after this one
 				$last = $next_page - 2;
-				echo "<a href = \"myevents.php?page=$last\" class='btn btn-primary m-r-1em'>Last 5 Events</a> |";
-				echo "<a href = \"myevents.php?page=$next_page\" class='btn btn-primary m-r-1em'>Next 5 Events</a>";
+				echo "<a href = \"myevents.php?page=$last\" class='btn btn-primary m-r-1em'>Previous</a> |";
+				echo "<a href = \"myevents.php?page=$next_page\" class='btn btn-primary m-r-1em'>Next</a>";
 			 };
 		};
 	}
@@ -114,10 +115,8 @@
 		}
 	}
 </script>
-<!--
     <footer>
-        <p>&copy; 2018 New GateWay Solutions Corporation</p>
+        <p>&copy; 2019 New GateWay Solutions Corporation</p>
     </footer>
--->
 </body>
 </html>

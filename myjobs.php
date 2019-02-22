@@ -38,41 +38,75 @@
 	// Grab company from database
 	$companyID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
 	$companyID = (mysqli_fetch_row($companyID_object))[0];
-
-	// Find company's jobs in database
-	$query = mysqli_query($link, "SELECT * FROM postajob WHERE companyID = '".$companyID."'");
-	$num_rows = mysqli_num_rows($query);
-
-	echo "
-	<br>
-	<br>
-	<table class='table table-hover table-responsive table-bordered' style='background-color: rgba(238,238,238,.8)'>";
-	echo "<tr>";
-		echo "<th>Job Title</th>";
-		echo "<th>Description</th>";
-		echo "<th>Salary</th>";
-		echo "<th>Action</th>";
-	echo "</tr>";
 	
-	while ($row = mysqli_fetch_assoc($query) ){
-		$jobTitle = $row['jobTitle'];
-		$description = $row['jobDescription'];
-		$salary = $row['salary'];
-		$jobID = $row['id'];
+	//set pagination variables
+	$records_per_page = 5;
+	
+	if( isset($_GET{'page'} ) ) {
+		$page = $_GET{'page'};
+		$next_page = $page + 1;
+		$offset = $records_per_page * ($page - 1);
+	}else {
+		$next_page = 2;
+		$offset = 0;
+		$page= 1;
+	}; 
+	
+	$query = mysqli_query($link, "SELECT count(id) FROM events WHERE companyID = '".$companyID."'");
+	
+	$row = mysqli_fetch_array($query, MYSQLI_NUM );
+	$record_count = $row[0];
+	$records_left = $record_count - ($records_per_page * ($page - 1));
+	
+	// Find company's jobs in database
+	$query = mysqli_query($link, "SELECT * FROM postajob WHERE companyID = '".$companyID."' LIMIT $offset, $records_per_page");
+	$num_rows = mysqli_num_rows($query);
+	
+	if ($num_rows > 0){
 		echo "
-		<tr>
-			<td><strong>$jobTitle</strong></td>
-			<td>$description</td>
-			<td>$$salary/hr</td>
-			<td>
-				<a href='job.php?id={$jobID}' class='btn btn-info m-r-1em'>View Job</a>
-				<a href='update_job_post.php?id={$jobID}' class='btn btn-primary m-r-1em'>Edit Job</a>
-				<a href='#' onclick='delete_job({$jobID});' class='btn btn-danger'>Delete Job</a>
-			</td>
-		</tr>
-		";
-		}
-	echo "</table>";
+		<br>
+		<br>
+		<table class='table table-hover table-responsive table-bordered' style='background-color: rgba(238,238,238,.8)'>";
+		echo "<tr>";
+			echo "<th>Job Title</th>";
+			echo "<th>Description</th>";
+			echo "<th>Salary</th>";
+			echo "<th>Action</th>";
+		echo "</tr>";
+		
+		while ($row = mysqli_fetch_assoc($query) ){
+			$jobTitle = $row['jobTitle'];
+			$description = $row['jobDescription'];
+			$salary = $row['salary'];
+			$jobID = $row['id'];
+			echo "
+			<tr>
+				<td><strong>$jobTitle</strong></td>
+				<td>$description</td>
+				<td>$$salary/hr</td>
+				<td>
+					<a href='job.php?id={$jobID}' class='btn btn-info m-r-1em'>View Job</a>
+					<a href='update_job_post.php?id={$jobID}' class='btn btn-primary m-r-1em'>Edit Job</a>
+					<a href='#' onclick='delete_job({$jobID});' class='btn btn-danger'>Delete Job</a>
+				</td>
+			</tr>
+			";
+			}
+		echo "</table>";
+		
+		if(!(($next_page == 2) && ($record_count <= $records_per_page))){ //this is not the only page
+			if( $next_page == 2 ) { //this is the first page
+				echo "<a href = \"myjobs.php?page=2\" class='btn btn-primary m-r-1em'>Next</a>";
+			}else if( $records_left <= $records_per_page) { //this is the last page
+				$last = $next_page - 2;
+				echo "<a href = \"myjobs.php?page=$last\" class='btn btn-primary m-r-1em'>Previous</a>";
+			 }else { //there are pages both before and after this one
+				$last = $next_page - 2;
+				echo "<a href = \"myjobs.php?page=$last\" class='btn btn-primary m-r-1em'>Previous</a> |";
+				echo "<a href = \"myjobs.php?page=$next_page\" class='btn btn-primary m-r-1em'>Next</a>";
+			 };
+		};
+	}
 ?>
 
 	<script type="text/javascript">
@@ -85,7 +119,7 @@
 	</script>
 
 	<footer class="fixed-bottom">
-		<p>&copy; 2018 New GateWay Solutions Corporation</p>
+		<p>&copy; 2019 New GateWay Solutions Corporation</p>
 	</footer>
 </body>
 </html>
