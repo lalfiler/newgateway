@@ -28,19 +28,17 @@
 	$records_per_page = 5;
 	
 	if( isset($_GET{'page'} ) ) {
-		$next_page = $_GET{'page'} + 1;
-		$offset = $records_per_page * ($_GET{'page'} - 1) ;
 		$page = $_GET{'page'};
+		$next_page = $page + 1;
+		$offset = $records_per_page * ($page - 1) ;
 	}else {
 		$next_page = 2;
 		$offset = 0;
 		$page= 1;
 	}; 
 	
-	$query = mysqli_query($link, "SELECT count(id) FROM events");
-	//if(! $query){
-	//	die('Could not get data: ' . mysqli_error($query));
-	//}
+	$query = mysqli_query($link, "SELECT count(id) FROM events WHERE date >= CURDATE()");
+	
 	$row = mysqli_fetch_array($query, MYSQLI_NUM );
 	$record_count = $row[0];
 	$records_left = $record_count - ($records_per_page * ($page - 1));
@@ -68,29 +66,23 @@
 			$time = $row['timeStart'];
 			$eventID = $row['id'];
 			
-			//determine if event is in the future
-			$event_date = new DateTime($date);
-			$current_date = new DateTime();
-			$current_date->add(DateInterval::createFromDateString('yesterday'));
-			
 			//determine company event belongs to
 			$query = mysqli_query($link, "SELECT companyName FROM employers WHERE id='" . $companyID . "'");
 			$companyName = (mysqli_fetch_row($query))[0];
 			
-			if($event_date >= $current_date){
-				echo "
-				<tr>
-					<td><strong>$title</strong></td>
-					<td>$companyName</td>
-					<td>$date</td>
-					<td>$time</td>
-					<td>
-						<a href='view_event.php?id={$eventID}' class='btn btn-info m-r-1em'>View Event Details</a>
-					</td>
-				</tr>
-				";
-			}
-		}
+			
+			echo "
+			<tr>
+				<td><strong>$title</strong></td>
+				<td>$companyName</td>
+				<td>$date</td>
+				<td>$time</td>
+				<td>
+					<a href='view_event.php?id={$eventID}' class='btn btn-info m-r-1em'>View Event Details</a>
+				</td>
+			</tr>
+			";
+		};
 		echo "</table>";
 		
 		if(!(($next_page == 2) && ($record_count <= $records_per_page))){ //this is not the only page
