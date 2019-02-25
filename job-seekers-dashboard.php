@@ -73,7 +73,7 @@ if(isset($_GET['login'])){
         <p class="events"><a href="view_events.php">Upcoming events</a></p>
         </div>
     <footer>
-        <p>&copy; 2018 New GateWay Solutions Corporation</p>
+        <p>&copy; 2019 New GateWay Solutions Corporation</p>
     </footer>
 </body>
 </html>

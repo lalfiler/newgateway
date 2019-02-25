@@ -85,7 +85,7 @@ if(isset($_GET['login'])){
         </div> -->
     </div>
     <footer>
-        <p>&copy; 2018 New GateWay Solutions Corporation</p>
+        <p>&copy; 2019 New GateWay Solutions Corporation</p>
     </footer>
 </body>
 </html>
