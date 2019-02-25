@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Edit My Event</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/job-posting.css" type="text/css">
 </head>
 <body>
@@ -78,11 +79,11 @@
 				$timeStart=htmlspecialchars(strip_tags($_POST['timeStart']));
 				$timeEnd=htmlspecialchars(strip_tags($_POST['timeEnd']));
 				$website=htmlspecialchars(strip_tags($_POST['website']));
-				$description=$_POST['description'];
+				$description=htmlspecialchars(strip_tags($_POST['description']));
 		 
 				// write update query
 				$query = "UPDATE events 
-							SET address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', title='" .$title. "', date='" .$date. "', timeStart='" .$timeStart. "', timeEnd='" .$timeEnd. "', website='". $website ."', description='". $description ."' WHERE id ='" .$id . "'";
+							SET address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', title='" .$title. "', date='" .$date. "', timeStart='" .$timeStart. "', timeEnd='" .$timeEnd. "', website='". $website . "', description='" . $description . "' WHERE id ='" .$id . "'";
 							
 							//
 									 
