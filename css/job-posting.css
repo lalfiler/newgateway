@@ -106,3 +106,7 @@ input, textarea, select {
     background-color: #fff;
     color: rgba(0,0,0,.7);
 }
+textbox {
+	width: 300px;
+	min-height: 500px;
+}
