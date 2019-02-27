@@ -52,11 +52,14 @@
 		$page= 1;
 	}; 
 	
-	$query = mysqli_query($link, "SELECT count(id) FROM events WHERE companyID = '".$companyID."'");
+	$query = mysqli_query($link, "SELECT count(id) FROM postajob WHERE companyID = '".$companyID."'");
 	
 	$row = mysqli_fetch_array($query, MYSQLI_NUM );
 	$record_count = $row[0];
-	$records_left = $record_count - ($records_per_page * ($page - 1));
+	$records_left = $record_count - $offset;
+	
+	echo "<script>console.log(" . $record_count . ")</script>";
+	echo "<script>console.log(" . $records_left . ")</script>";
 	
 	// Find company's jobs in database
 	$query = mysqli_query($link, "SELECT * FROM postajob WHERE companyID = '".$companyID."' LIMIT $offset, $records_per_page");
