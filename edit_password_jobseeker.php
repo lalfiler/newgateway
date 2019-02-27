@@ -57,17 +57,17 @@
 					<div>
 						<label for="oldPassword">Old Password:</label>
 						<br>
-						<input type="text" id="oldPassword" name="oldPassword">
+						<input type="password" id="oldPassword" name="oldPassword">
 					</div>
 					<div>
 						<label for="newPassword">New Password:</label>
 						<br>
-						<input type="text" id="newPassword" name="newPassword">
+						<input type="password" id="newPassword" name="newPassword">
 					</div>
 					<div>
 						<label for="newPasswordConfirm">Confirm New Password:</label>
 						<br>
-						<input type="text" id="newPasswordConfirm" name="newPasswordConfirm">
+						<input type="password" id="newPasswordConfirm" name="newPasswordConfirm">
 					</div>
 					<div>
 						<input type="submit" id="submit" class="submit">
