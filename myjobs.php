@@ -52,11 +52,11 @@
 		$page= 1;
 	}; 
 	
-	$query = mysqli_query($link, "SELECT count(id) FROM events WHERE companyID = '".$companyID."'");
+	$query = mysqli_query($link, "SELECT count(id) FROM postajob WHERE companyID = '".$companyID."'");
 	
 	$row = mysqli_fetch_array($query, MYSQLI_NUM );
 	$record_count = $row[0];
-	$records_left = $record_count - ($records_per_page * ($page - 1));
+	$records_left = $record_count - $offset;
 	
 	// Find company's jobs in database
 	$query = mysqli_query($link, "SELECT * FROM postajob WHERE companyID = '".$companyID."' LIMIT $offset, $records_per_page");
@@ -70,7 +70,7 @@
 		echo "<tr>";
 			echo "<th>Job Title</th>";
 			echo "<th>Description</th>";
-			echo "<th>Salary</th>";
+			echo "<th>Salary/hour</th>";
 			echo "<th>Action</th>";
 		echo "</tr>";
 		
@@ -78,12 +78,15 @@
 			$jobTitle = $row['jobTitle'];
 			$description = $row['jobDescription'];
 			$salary = $row['salary'];
+			if($salary == 0){
+				$salary = "unknown";
+			}
 			$jobID = $row['id'];
 			echo "
 			<tr>
 				<td><strong>$jobTitle</strong></td>
 				<td>$description</td>
-				<td>$$salary/hr</td>
+				<td>$salary</td>
 				<td>
 					<a href='job.php?id={$jobID}' class='btn btn-info m-r-1em'>View Job</a>
 					<a href='update_job_post.php?id={$jobID}' class='btn btn-primary m-r-1em'>Edit Job</a>

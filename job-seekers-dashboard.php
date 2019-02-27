@@ -62,7 +62,7 @@ if(isset($_GET['login'])){
 		?>
         <div id="form">
             <form class="form search" action="search.php" method="post">
-                <h2>Search for jobs</h2>
+                <h1>Search for jobs</h1>
                 <br>
                 <input class="job-title" type="text" name="jobTitle" placeholder="Job Title">
                 <input class="address" type="text" name="address" placeholder="City / Zipcode">
