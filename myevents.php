@@ -115,6 +115,10 @@
 		}
 	}
 </script>
+<br>
+<br>
+<br>
+<br>
     <footer>
         <p>&copy; 2019 New GateWay Solutions Corporation</p>
     </footer>

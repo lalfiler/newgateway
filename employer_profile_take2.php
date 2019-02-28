@@ -18,12 +18,12 @@
         </div>
         
 		<div style="display: block; text-align:center">
-			<form action="edit_password_jobseeker.php">
+			<form action="edit_password_employer.php">
 				<input class="submit" type="submit" value="Change Password"  style="width:100%; font-size: 130%">
 			</form>
 		</div>
 		
-		<form action="job-seekers-dashboard.php">
+		<form action="employers-dashboard.php">
 			<input type="submit" class="button" value="Back to Dashboard" style="width:100%; font-size: 130%">
 		</form>
 		<?php
@@ -40,48 +40,33 @@
 			}
 
 			// Grab company from database
-			$jobseekerID_object = mysqli_query($link, "SELECT id from jobseekers WHERE email = '".$email."'");
-			$jobseekerID = (mysqli_fetch_row($jobseekerID_object))[0];
+			$employerID_object = mysqli_query($link, "SELECT id from employers WHERE email = '".$email."'");
+			$employerID = (mysqli_fetch_row($employerID_object))[0];
 					
 			
-			 
-			// read current record's data
-			// prepare select query
-			$query = mysqli_query($link, "SELECT * FROM jobseekers WHERE id = '" . $jobseekerID . "' LIMIT 1");
-			$row = mysqli_fetch_assoc($query);
-		 
-			$firstName = $row['firstName'];
-			$lastName = $row['lastName'];
-			$address = $row['Address'];
-			$city = $row['City'];
-			$state = $row['State'];
-			$zip = $row['zip'];
-			$telephone = $row['Telephone'];
-			$email = $row['Email'];
-			$userName = $row['userName'];
-			$linkedIn = $row['LinkedIn'];
-			 
 		// check if form was submitted
 		if($_POST){
 			 
 			try{
 			 
 				// posted values
-				$firstName=htmlspecialchars(strip_tags($_POST['firstName']));
-				$lastName=htmlspecialchars(strip_tags($_POST['lastName']));
-				$address=htmlspecialchars(strip_tags($_POST['Address']));
-				$city=htmlspecialchars(strip_tags($_POST['City']));
-				$state=htmlspecialchars(strip_tags($_POST['State']));
+				$companyName=htmlspecialchars(strip_tags($_POST['companyName']));
+				$website=htmlspecialchars(strip_tags($_POST['website']));
+				$address=htmlspecialchars(strip_tags($_POST['address']));
+				$city=htmlspecialchars(strip_tags($_POST['city']));
+				$state=htmlspecialchars(strip_tags($_POST['state']));
 				$zip=htmlspecialchars(strip_tags($_POST['zip']));
-				$telephone=htmlspecialchars(strip_tags($_POST['Telephone']));
-				$email=htmlspecialchars(strip_tags($_POST['Email']));
+				$telephone=htmlspecialchars(strip_tags($_POST['telephone']));
+				$email=htmlspecialchars(strip_tags($_POST['email']));
 				$userName=htmlspecialchars(strip_tags($_POST['userName']));
-				$linkedIn=htmlspecialchars(strip_tags($_POST['LinkedIn']));
-		 
+				$linkedIn=htmlspecialchars(strip_tags($_POST['linkedIn']));
+		 		 
 				// write update query
-				$query = "UPDATE jobseekers 
-							SET firstName='". $firstName ."', lastName='". $lastName ."', Address='". $address ."', City='" .$city. "', State='" .$state. "', zip='" .$zip. "', Telephone='". $telephone ."', Email='". $email ."', userName='". $userName ."', LinkedIn='" .$linkedIn. "'
-							WHERE id ='" .$jobseekerID. "'";
+				$query = "UPDATE employers 
+							SET companyName='". $companyName ."'
+							WHERE id ='" .$employerID. "'";
+							
+							//"', website='". $website ."', address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', telephone='". $telephone ."', email='". $email ."', userName='". $userName ."', linkedIn='" .$linkedIn. 
 		 
 				// prepare query for execution
 				$stmt = $link->prepare($query);
@@ -100,60 +85,77 @@
 				die('ERROR: ' . $e->getMessage());
 			}
 		}
+		
+		// read current record's data
+			// prepare select query
+			$query = mysqli_query($link, "SELECT * FROM employers WHERE id = '" . $employerID . "' LIMIT 1");
+			$row = mysqli_fetch_assoc($query);
+		 
+			$companyName = $row['companyName'];
+			$website = $row['website'];
+			$address = $row['address'];
+			$city = $row['city'];
+			$state = $row['state'];
+			$zip = $row['zip'];
+			$telephone = $row['telephone'];
+			$email = $row['email'];
+			$userName = $row['userName'];
+			$linkedIn = $row['linkedIn'];
+			
 		?>
  
 		<div id="form">
-        <form action="jobseeker_profile.php" method="post">
+        <form action="employer_profile_take2.php" method="post">
             <fieldset>
                     <div>
-                        <label for="firstName">First Name:</label>
+                        <label for="companyName">Company Name:</label>
                         <br>
-                        <input type="text" id="firstName" name="firstName" value="<?php echo htmlspecialchars($firstName, ENT_QUOTES);  ?>">
+                        <input type="text" id="companyName" name="companyName" value="<?php echo htmlspecialchars($companyName, ENT_QUOTES);  ?>">
                     </div>
                     <div>
-                        <label for="lastName">Last Name:</label>
+                        <label for="website">Website:</label>
                         <br>
-                        <input type="text" id="lasName" name="lastName" value="<?php echo htmlspecialchars($lastName, ENT_QUOTES);  ?>">
+                        <input type="url" id="website" name="website" value="<?php echo htmlspecialchars($website, ENT_QUOTES);  ?>">
                     </div>
                     <div>
                         <label for="address">Address:</label>
                         <br>
-                        <input type="text" id="address" name="Address" value="<?php echo htmlspecialchars($address, ENT_QUOTES);  ?>">
+                        <input type="text" id="address" name="address" value="<?php echo htmlspecialchars($address, ENT_QUOTES);  ?>">
                     </div>
                     <div>
                         <label for="city">City:</label>
                         <br>
-                        <input type="text" id="city" name="City" value="<?php echo htmlspecialchars($city, ENT_QUOTES);  ?>">
+                        <input type="text" id="city" name="city" value="<?php echo htmlspecialchars($city, ENT_QUOTES);  ?>">
                     </div>
                     <div>
                         <label for="state">State:</label>
                         <br>
-                        <input type="text" id="state" name="State" value="<?php echo htmlspecialchars($state, ENT_QUOTES);  ?>">
+                        <input type="text" id="state" name="state" value="<?php echo htmlspecialchars($state, ENT_QUOTES);  ?>">
                     </div>
                     <div>
-                        <label for="zipcode">Zipcode:</label>
+                        <label for="zip">Zipcode:</label>
                         <br>
-                        <input type="number" id="zipcode" name="zip" value="<?php echo htmlspecialchars($zip, ENT_QUOTES);  ?>">
+                        <input type="number" id="zip" name="zip" value="<?php echo htmlspecialchars($zip, ENT_QUOTES);  ?>">
                     </div>
                     <div>
-                        <label for="phone">Phone:</label>
+                        <label for="telephone">Phone:</label>
                         <br>
-                        <input type="tel" id="phone" name="Telephone" value="<?php echo htmlspecialchars($telephone, ENT_QUOTES);  ?>">
+                        <input type="text" id="telephone" name="telephone" value="<?php echo htmlspecialchars($telephone, ENT_QUOTES);  ?>">
                     </div>
                     <div>
                         <label for="email">Email:</label>
                         <br>
-                        <input type="email" id="email" name="Email" value="<?php echo htmlspecialchars($email, ENT_QUOTES);  ?>">
+                        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($email, ENT_QUOTES);  ?>">
                     </div>
                     <div>
-                        <label for="username">User Name:</label>
+                        <label for="userName">User Name:</label>
                         <br>
-                        <input type="username" id="username" name="userName" value="<?php echo htmlspecialchars($userName, ENT_QUOTES);  ?>">
+                        <input type="username" id="userName" name="userName" value="<?php echo htmlspecialchars($userName, ENT_QUOTES);  ?>">
                     </div>
                     <div>
-                        <label for="linkedin">LinkedIn Profile:</label>
+                        <label for="linkedIn">LinkedIn Profile:</label>
                         <br>
-                        <input type="url" id="linkedin" name="LinkedIn" value="<?php echo htmlspecialchars($linkedIn, ENT_QUOTES);  ?>">
+                        <input type="url" id="linkedIn" name="linkedIn" value="<?php echo htmlspecialchars($linkedIn, ENT_QUOTES);  ?>">
                     </div>
                     <br>
                     <span>
