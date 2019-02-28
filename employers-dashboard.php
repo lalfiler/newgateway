@@ -44,7 +44,7 @@ if(isset($_GET['login'])){
 		<form action="logout.php" class="logout" style="inline-block">
 			<input class="submit" type="submit" value="Log Out">
 		</form>
-		<form action="employer_profile.php" class="logout" style="inline-block">
+		<form action="employer_profile_take2.php" class="logout" style="inline-block">
 			<input class="submit" type="submit" value="My Profile">
 		</form>
 	</div>

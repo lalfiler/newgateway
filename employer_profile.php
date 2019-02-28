@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Edit My Profile</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/job-posting.css" type="text/css">
 </head>
 <body>
@@ -19,12 +20,15 @@
         
 		<div style="display: block; text-align:center">
 			<form action="edit_password_employer.php">
-				<input class="submit" type="submit" value="Change Password"  style="width:100%">
+				<input class="submit" type="submit" value="Change Password"  style="width:100%; font-size: 130%">
 			</form>
 		</div>
+		
+		<form action="employers-dashboard.php">
+			<input type="submit" class="button" value="Back to Dashboard" style="width:100%; font-size: 130%">
+		</form>
 		<?php
 		
-			//include_once 'accesscontrol.php';
 			session_start();
 			$email = $_SESSION['email'];
 			
@@ -63,6 +67,7 @@
 			try{
 			 
 				// posted values
+				/*
 				$company=htmlspecialchars(strip_tags($_POST['company']));
 				$website=htmlspecialchars(strip_tags($_POST['website']));
 				$address=htmlspecialchars(strip_tags($_POST['address']));
@@ -73,13 +78,25 @@
 				$email=htmlspecialchars(strip_tags($_POST['email']));
 				$userName=htmlspecialchars(strip_tags($_POST['userName']));
 				$linkedIn=htmlspecialchars(strip_tags($_POST['linkedIn']));
-		 
+				*/
+				
+				$company=$_POST['company'];
+				$website=$_POST['website'];
+				$address=$_POST['address'];
+				$city=$_POST['city'];
+				$state=$_POST['state'];
+				$zip=$_POST['zip'];
+				$telephone=$_POST['telephone'];
+				$email=$_POST['email'];
+				$userName=$_POST['userName'];
+				$linkedIn=$_POST['linkedIn'];
+				
+				//debugging
+				echo "<script>console.log('companyID is: '" . $companyID . ");</script>";
+				
 				// write update query
-				$query = "UPDATE employers
-							SET companyName='". $company ."', website='". $website ."', address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', telephone='". $telephone ."', email='". $email ."', userName='". $userName ."', linkedIn='" .$linkedIn. "'
-							WHERE id ='" .$companyID. "'";
+				$query = "UPDATE employers SET companyName='". $company ."', website='". $website ."', address='". $address ."', city='" .$city. "', state='" .$state. "', zip='" .$zip. "', telephone='". $telephone ."', email='". $email ."', userName='". $userName ."', linkedIn='" .$linkedIn."' WHERE id ='" .$companyID. "'";
 							
-		 
 				// prepare query for execution
 				$stmt = $link->prepare($query);
 				
@@ -105,7 +122,7 @@
 				<div>
 					<label for="company">Company Name:</label>
 					<br>
-					<input type="text" id="company" name="company" value="<?php echo htmlspecialchars($company, ENT_QUOTES);  ?>"">
+					<input type="text" id="company" name="company" value="<?php echo htmlspecialchars($company, ENT_QUOTES);  ?>">
 				</div>
 				<div>
 					<label for="website">Company Website:</label>
@@ -130,7 +147,7 @@
 				<div>
 					<label for="zipcode">Zipcode:</label>
 					<br>
-					<input type="number" id="zipcode" name="zip" value="<?php echo htmlspecialchars($zip, ENT_QUOTES);  ?>"
+					<input type="number" id="zipcode" name="zip" value="<?php echo htmlspecialchars($zip, ENT_QUOTES);  ?>">
 				</div>
 				<div>
 					<label for="phone">Phone:</label>
@@ -154,7 +171,7 @@
 				</div>
 				<br>
 				<span>
-					<input type="submit" id="submit" class="submit">
+					<input type="submit" id="submit" class="submit" style="width:100%; font-size: 130%">
 				</span>
             </fieldset>
         </form>
