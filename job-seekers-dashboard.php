@@ -48,6 +48,7 @@ if(isset($_GET['login'])){
 			<input class="submit" type="submit" value="My Profile">
 		</form>
 	</div>
+	<div class="mobile"><p>New Gateway Job Board Mobile App Coming soon!</p></div>
     <div class="container">
 		<?php 
 			if($status == "password"){

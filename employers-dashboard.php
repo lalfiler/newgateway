@@ -41,6 +41,7 @@ if(isset($_GET['login'])){
 				</p>
 			</form>
 		</div>
+	<div class="mobile"><p>New Gateway Job Board Mobile App Coming soon!</p></div>
 		<form action="logout.php" class="logout" style="inline-block">
 			<input class="submit" type="submit" value="Log Out">
 		</form>
