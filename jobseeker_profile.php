@@ -82,12 +82,9 @@
 				$query = "UPDATE jobseekers 
 							SET firstName='". $firstName ."', lastName='". $lastName ."', Address='". $address ."', City='" .$city. "', State='" .$state. "', zip='" .$zip. "', Telephone='". $telephone ."', Email='". $email ."', userName='". $userName ."', LinkedIn='" .$linkedIn. "'
 							WHERE id ='" .$jobseekerID. "'";
-		 
-				// prepare query for execution
-				$stmt = $link->prepare($query);
 				
 				// Execute the query
-				if($stmt->execute()){
+				if(mysqli_query($link, $query){
 					echo "<div class='alert alert-success'>Your profile was updated.</div>";
 				}else{
 					echo "<div class='alert alert-danger'>Unable to update record. Please try again.</div>";
