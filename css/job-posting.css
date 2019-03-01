@@ -18,7 +18,10 @@ form {
 footer {
     text-align: center;
     background-color: rgba(0,0,0,.5);
-    padding: 8px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     color: #fff;
 }
 .logo {
@@ -49,7 +52,6 @@ br {
 h1 {
     text-align: center;
     color: #fff;
-    text-shadow: 5px 5px 5px #aaa;
 }
 #job-description {
     width: 250px;
@@ -104,9 +106,15 @@ input, textarea, select {
     background-color: #fff;
     color: rgba(0,0,0,.7);
 }
+
 .mobile{
 	background-color:rgba(183, 183, 183,0.5);
 	color:#fff;
 	text-align:center;
 	padding:0.01rem;
+  
+textbox {
+	width: 300px;
+	min-height: 500px;
+  }
 }

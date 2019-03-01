@@ -45,7 +45,7 @@ if(isset($_GET['login'])){
 		<form action="logout.php" class="logout" style="inline-block">
 			<input class="submit" type="submit" value="Log Out">
 		</form>
-		<form action="employer_profile.php" class="logout" style="inline-block">
+		<form action="employer_profile_take2.php" class="logout" style="inline-block">
 			<input class="submit" type="submit" value="My Profile">
 		</form>
 	</div>
@@ -86,7 +86,7 @@ if(isset($_GET['login'])){
         </div> -->
     </div>
     <footer>
-        <p>&copy; 2018 New GateWay Solutions Corporation</p>
+        <p>&copy; 2019 New GateWay Solutions Corporation</p>
     </footer>
 </body>
 </html>

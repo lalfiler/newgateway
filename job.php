@@ -152,6 +152,9 @@
  
     </div> <!-- end .container -->
 	
+	<footer>
+        <p>&copy; 2019 New GateWay Solutions Corporation</p>
+    </footer>
 <script type="text/javascript">
 	function delete_job(id){
 		var confirmation = confirm("Are you sure you want to delete this job posting?");

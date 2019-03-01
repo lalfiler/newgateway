@@ -63,7 +63,7 @@ if(isset($_GET['login'])){
 		?>
         <div id="form">
             <form class="form search" action="search.php" method="post">
-                <h2>Search for jobs</h2>
+                <h1>Search for jobs</h1>
                 <br>
                 <input class="job-title" type="text" name="jobTitle" placeholder="Job Title">
                 <input class="address" type="text" name="address" placeholder="City / Zipcode">
@@ -74,7 +74,7 @@ if(isset($_GET['login'])){
         <p class="events"><a href="view_events.php">Upcoming events</a></p>
         </div>
     <footer>
-        <p>&copy; 2018 New GateWay Solutions Corporation</p>
+        <p>&copy; 2019 New GateWay Solutions Corporation</p>
     </footer>
 </body>
 </html>
